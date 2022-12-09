@@ -10,7 +10,7 @@
 
                 <li>
                     <a href="/note?id=1" class="text-blue-500 hover:underline" >
-                        <?= $note['body'] ?>
+                        <?= htmlspecialchars($note['body']) ?>
                     </a>
                 </li>
             <?php endforeach; ?>
