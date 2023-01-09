@@ -6,12 +6,12 @@
 
 <section class="h-100 pt-5">
     <div class="container pt-5">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-xl-8">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-lg-9 d-sm-9 d-block">
           <div class="card rounded-3 text-black">
             <div class="row g-0">
-              <div class="col-lg-6">
-                <div class="card-body p-md-5 mx-md-4">
+              <div class="col-md-6 ">
+                <div class="card-body ">
 
                   <div class="text-center mt-5">
                     <img src="{{asset('img/gelogo.png')}}"
@@ -44,7 +44,7 @@
                 </div>
               </div>
 
-              <div class="col-md-6  d-none d-md-block">
+              <div class="col-md-6 d-none d-md-block">
                 <img src="https://images.unsplash.com/photo-1526512340740-9217d0159da9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80"
                   alt="login" class="img-fluid" />
               </div>
