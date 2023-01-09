@@ -6,9 +6,9 @@
 
 <section class="h-100 pt-5">
     <div class="container pt-5">
-      <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-lg-9 d-sm-9 d-block">
-          <div class="card rounded-3 text-black">
+      <div class="row d-flex justify-content-center align-content-center">
+        <div class="col-lg-9 ">
+          <div class="card rounded-3 text-black mt-5">
             <div class="row g-0">
               <div class="col-md-6 ">
                 <div class="card-body ">
