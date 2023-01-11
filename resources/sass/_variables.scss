@@ -24,3 +24,28 @@ $line-height-base: 1.6;
     border-bottom-right-radius: .3rem;
     }
     }
+/*IMGEN JUMBOTRON*/
+
+
+
+    /*And then change */
+      .img-responsive {
+        display: flex;
+        height: auto;
+        max-width: 25%;
+        align-items: center;
+        justify-content: center;
+
+    }
+    /*To */
+
+    table {
+        table-layout: fixed;
+        word-wrap: break-word;
+
+
+    }
+.centrado{
+    display:grid;
+    place-items: center;
+}
