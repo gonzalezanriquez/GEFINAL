@@ -16,7 +16,7 @@
 <body>
     <div >
         @include('nav.superiornav')
-        <main class="">
+        <main class="mt-5 pt-5">
             @yield('content')
         </main>
     </div>

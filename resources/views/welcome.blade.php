@@ -3,44 +3,27 @@
 
 @section('content')
 
-<section class="container-fluid vh-100 " >
-    <div class="container  d-flex flex-column justify-content-center align-items-center">
-        <div class="row d-flex  flex-column align-items-center">
-            <div class="col-12 col-md-6">
-                <div class="col-12">
-                    <h1 class="big_letter">All in One School <br><span class="small_letter">Management Software</span></h1>
-                </div>
-                <div class="col-12">
 
 
-                </div>
+<div class=" container  vh-100"  >
+
+    <div class="container mt-5 pt-5 my-5" id="centrado">
+        <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+          <div class="col-sm-7">
+            <h1 class="display-4 fw-bold lh-1">Gestiones Educativas</h1>
+            <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae nesciunt ullam minus suscipit sit quia quos! Consequatur perferendis quia sapiente cum, quos vero illum, vitae voluptates labore nam saepe quaerat?</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start ">
+              <button type="button" class="btn btn-warning">Inicia Sesion</button>
+              <button type="button" class="btn btn-outline-secondary px-4">Contactate</button>
             </div>
-
-            <div class="col-12 col-md-6 banner-img-wrap">
-                <div class="row align-items-end">
-                       <img alt="school management software" src="https://www.smartschoolerp.com/wp-content/themes/smartschool/img/banner01.png">
-                </div>
-            </div>
+          </div>
+          <div class="col-sm-5  ">
+             <img class="rounded-lg-3 img-fluid" src="{{asset('img/mac.png')}}" alt="" >
+          </div>
         </div>
-    </div>
-</section>
-
-{{--
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 p-0">
-
-            <div class="jumbotron min-vh-100 text-center m-0  d-flex flex-column justify-content-center">
-                <div class="container">
-                    <img class="img-responsive text-center" src="https://www.smartschoolerp.com/wp-content/themes/smartschool/img/banner01.png" alt=""></div>
-                <h1 class="display-4">Jumbotron</h1>
-                <p class="lead">This is a full-screen centered hero unit.</p>
+      </div>
 
 
-            </div>
-        </div>
-    </div>
-</div> --}}
+</div>
 
 @endsection

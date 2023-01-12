@@ -23,7 +23,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
+//conjunto de urls protegidas por login
 Route::group(['middleware'=>['auth']],function(){
     Route::resource('posts', PostController::class);
 
