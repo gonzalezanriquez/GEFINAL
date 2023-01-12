@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::group(['middelware'=>'auth'], function(){
-    Route::resource('posts', 'App\Http\Controllers\PostController');
+Route::group(['middleware'=>['auth']],function(){
+    Route::resource('posts', PostController::class);
+
 });
 
-Route::get('/noticias', [App\Http\Controllers\PostController::class, 'noticias'])->name('noticias');
+Route::get('/noticias', [App\Http\Controllers\PostController::class,'noticias'])->name('noticias');
