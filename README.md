@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src=https://github.com/gonzalezanriquez/GEFINAL/blob/main/public/img/gelogo.png?raw=true" height="190" alt="Laravel Logo"></a> <h1 align="center">Gestiones Educativas</h1></p>
+<p align="center"><a href="#" target="_blank"><img src=https://github.com/gonzalezanriquez/GEFINAL/blob/main/public/img/gelogo.png" height="190" alt="Ge Logo"></a> <h1 align="center">Gestiones Educativas</h1></p>
 
 
 ## Nuestro Sistema
