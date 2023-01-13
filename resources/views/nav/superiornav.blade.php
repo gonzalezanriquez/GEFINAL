@@ -1,8 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow fixed-top">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
-        </a>
+          <img class="" src="{{ asset('img/gelogo.png') }}" alt="" height="70rem"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,7 +9,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-
+                <li class="nav-item"><a href="{{ route('noticias') }}" class="nav-link">Noticias</a></li>
+                <li class="nav-item"><a href="{{ route('posts.index') }}" class="nav-link">Posts</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

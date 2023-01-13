@@ -24,3 +24,26 @@ $line-height-base: 1.6;
     border-bottom-right-radius: .3rem;
     }
     }
+/*IMGEN JUMBOTRON*/
+
+
+
+    table {
+        table-layout: fixed;
+        word-wrap: break-word;
+
+
+    }
+
+#centrado{
+    display:grid;
+    place-items: center;
+
+
+}
+
+#heroimg{
+    max-height:25rem;
+    object-fit: scale-down;
+
+}
