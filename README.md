@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src=https://github.com/gonzalezanriquez/GEFINAL/blob/main/public/img/gelogo.png" height="190" alt="Ge Logo"></a> <h1 align="center">Gestiones Educativas</h1></p>
+<p align="center"><a href="#" target="_blank"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiAUSSIBt7T3l2m_l3heV2vhMZoA_ZNCJx_kRPDdqS3ry_9jigT7FqbDF2SzSWJD2gLPT7Zn6tyB6I5day-yiM3tBOwnKGP71XrHpOC54JDwivF65ZxL01gbjy_6xkbuqfSq-RTGjlyBAa2VZZMRW9ajsNTV0SSDCcg62XEEk_5zC89VsgHZRXm04I3/s351/gelogo.png" height="190" alt="Ge Logo"></a> <h1 align="center">Gestiones Educativas</h1></p>
 
 
 ## Nuestro Sistema
