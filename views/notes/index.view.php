@@ -8,10 +8,8 @@
         <ul>
 
             <?php foreach ($notes as $note) : ?>
-
-
                 <li>
-                    <a href="/note?id= <?= $note['id'] ?>" class="text-blue-500 hover:underline" >
+                    <a href="/note?id=<?= $note['id'] ?>" class="text-blue-500 hover:underline" >
                         <?= htmlspecialchars($note['body']) ?>
                     </a>
                 </li>
@@ -21,11 +19,11 @@
         <p class="mt-6">
             <a href="/notes/create" class="text-blue-500 hover:underline">Create Note</a>
         </p>
-        <p class="mt-6">
+        <!--<p class="mt-6">
         <form method="POST">
                 <button type="submit" class="text-blue-500 hover:underline">Delete All Notes</button>
         </form>
-        </p>
+        </p>-->
 
     </div>
   </main>

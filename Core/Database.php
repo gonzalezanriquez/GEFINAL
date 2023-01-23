@@ -1,5 +1,7 @@
 <?php 
 
+namespace Core;
+use PDO;
 
 class Database {
 
@@ -34,6 +36,7 @@ class Database {
     {
         return  $this->statement->fetchAll();
     }
+
     public function findOrFail()
     {
         $result = $this->find();
