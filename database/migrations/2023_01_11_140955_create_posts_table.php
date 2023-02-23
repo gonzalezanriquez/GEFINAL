@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('contenido');
-            $table->string('isVisible')->default(1);
+            $table->boolean('isVisible')->default(true);
             $table->timestamps();
         });
     }

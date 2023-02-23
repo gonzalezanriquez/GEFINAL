@@ -107,10 +107,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->update(['titulo'=>0,
-    'contenido'=>'Jueves y viesadnes ',
-    'isVisible'=>'0',
-]);
+
+        $post->isVisible = false;
 
      return redirect()->route('posts.index');
 
