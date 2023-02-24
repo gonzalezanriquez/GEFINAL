@@ -3,26 +3,31 @@
 
 @section('content')
 
-<div class="headerwelcome">
-    <div class="container mt-5 vh-100 " >
-        <div class="container mt-5">
-            <div class="row  align-items-center justify-content-center">
-                <div class="col-12  col-md-6 text-center">
-                    <img src="{{ asset('/img/gelogo.png') }}
-                    " alt="" height="150px">
-                    <h1>Gestiones Educativas</h1>
-                <h2>Soluciones integrales </h2>
-                    <h2><span class="highlight">necesidades</span></h2>
-                </div>
-                <div class="col-12 col-md-6">
-                    <img class="img-fluid" src="/img/app2.png" alt="">
+    <div class="headerwelcome">
+        <div class="container mt-5 vh-100 ">
+            <div class="container mt-5">
+                <div class="row  mx-5 align-items-center text -xs-center text-sm-left ">
+                    <div class="col-12  col-md-6 px-sm-3 pt-ms-4">
+
+
+                    <h1 class="titulo">Soluciones integrales para tus <span class="circle-sketch-highlight circle-sketch-highlight:before">gestiones escolares </span></h1>
+
+
+                    <p class="bajadaTitulo d-flex justify-content-end">Te ayudamos a sistematizar todas tus labores administrativas escolares brindando una respuesta rapida y sencilla a docentes, alumnos y personal escolar. </p>
+
+                    <a class="text-center btn btn-primary font-weight-bold theme-btn" href="">Iniciar Sesion</a>
+
+                    {{-- <p class="bajadaTitulo"> <span class="highlight text-white">Iniciar Sesion</span> </p> --}}
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <img class="img-fluid" src="/img/app2.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     </div>
-</div>
+    </div>
 
     {{--
 <div class="container vh-100">
