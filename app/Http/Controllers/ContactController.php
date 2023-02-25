@@ -16,9 +16,14 @@ class ContactController extends Controller
             'message' => 'required'
          ]);
 
-         Contact::create($request->all());
+         Contact::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject'=>$request->subject,
+            'message' => $request->message
+         ]);
 
-         return redirect('/')->with('message', 'Thanks for contacting us! We will be in touch with you shortly.');
+         return redirect('/')->with('message', 'Gracias tu mensaje se ha enviado correctamente. Nos podremos en contacto a la brevedad');
     }
 
     public function get_messages(){

@@ -26,6 +26,8 @@ class PostController extends Controller
         //trae los registrso
         $posts=Post::where('isVisible',1)->get();
         $postsNot=Post::where('isVisible',0)->get();
+        $activePosts=Post::where('isVisible',1)->count();
+
 
         return view('posts.index',compact('posts','postsNot'));
     }
