@@ -11,11 +11,23 @@
 </head>
 
 <body>
-    <div >
 
         <main class="">
             @yield('content')
+
+
         </main>
+
+
+      </div>
+		</div>
+
+
+
+
+
+
+
     </div>
 </body>
 </html>

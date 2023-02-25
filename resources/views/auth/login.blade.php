@@ -1,4 +1,4 @@
-@extends('layouts.appSinBarras')
+@extends('layouts.nonav')
 @section('title', 'Login')
 
 
@@ -19,7 +19,7 @@
                   <div class="text-center mt-5">
                     <img src="{{asset('img/gelogo.png')}}"
                       style="width: 10rem;" alt="logo">
-                    <h4 class="mt-1 mb-5 pb-1">Gestiones Educativas</h4>
+
                 </div>
 
                 <form method="POST" action="{{ route('login') }}">

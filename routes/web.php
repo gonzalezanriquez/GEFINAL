@@ -37,3 +37,5 @@ Route::post('/contact_us', [App\Http\Controllers\ContactController::class, 'cont
   Route::get('/contact', [App\Http\Controllers\ContactController::class,'contact'])->name('contact');
 
 Route::get('/noticias', [App\Http\Controllers\PostController::class,'noticias'])->name('noticias');
+
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
