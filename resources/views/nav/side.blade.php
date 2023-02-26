@@ -74,7 +74,7 @@
                 <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('posts.index')}}">Noticias</a>
+                <a class="nav-link" href="{{route('posts.index')}}">Noticiass</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('users.index')}}">Alumnos</a>

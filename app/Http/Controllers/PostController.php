@@ -4,22 +4,21 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use DateTime;
 use Illuminate\Http\Request;
-<<<<<<< Updated upstream
-=======
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
->>>>>>> Stashed changes
+
 
 class PostController extends Controller
 {
     public function index()
     {
-<<<<<<< Updated upstream
+
         //trae los registrso
         $posts=Post::where('isVisible',1)->get();
         $postsNot=Post::where('isVisible',0)->get();
-=======
+
         $user = auth()->user();
         $authotizedRole = $user->roles()->get();
 
@@ -32,7 +31,7 @@ class PostController extends Controller
             ]);
         }
 
->>>>>>> Stashed changes
+
 
     }
 
@@ -50,7 +49,7 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-<<<<<<< Updated upstream
+
         $request->validate([
             'titulo'=>'required',
             'contenido'=>'required',
@@ -59,7 +58,7 @@ class PostController extends Controller
         ]);
         Post::create($request->all());
         return redirect()->route('posts.index');
-=======
+
 
         $user = auth()->user();
         $authotizedRole = $user->roles()->get();
@@ -85,7 +84,7 @@ class PostController extends Controller
         }
 
 
->>>>>>> Stashed changes
+
     }
 
     public function edit(Post $post)
@@ -116,25 +115,6 @@ class PostController extends Controller
             $request->validate([
                 'title' => ['required', 'max:255'],
                 'body' => ['required', 'max:255'],
-
-<<<<<<< Updated upstream
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Post $post)
-    {
-        $post->update(['titulo'=>0,
-    'contenido'=>'Jueves y viesadnes ',
-    'isVisible'=>'0',
-]);
-
-     return redirect()->route('posts.index');
-
-    }
-=======
             ]);
 
             /*$post = Post::find($request->id);*/
@@ -165,5 +145,16 @@ class PostController extends Controller
 
         return redirect('/posts');
     }
->>>>>>> Stashed changes
+
+
+    public function destroyLean(Post $post)
+    {
+        $post->update(['titulo' => 0,
+            'contenido' => 'Jueves y viesadnes ',
+            'isVisible' => '0',
+        ]);
+
+        return redirect()->route('posts.index');
+
+    }
 }

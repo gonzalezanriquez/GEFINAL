@@ -3,14 +3,13 @@
 use App\Http\Controllers\LevelsController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
-<<<<<<< Updated upstream
-=======
+
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
->>>>>>> Stashed changes
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,19 +42,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/users/delete/{id}',[UserController::class, 'destroy'])->name('users.delete');
 });
 
-<<<<<<< Updated upstream
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//conjunto de urls protegidas por login
-Route::group(['middleware'=>['auth']],function(){
-    Route::resource('posts', PostController::class);
-
-});
-
-Route::get('/noticias', [App\Http\Controllers\PostController::class,'noticias'])->name('noticias');
-=======
 //Posts
 Route::middleware('auth')->group(function () {
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
@@ -78,7 +64,7 @@ Route::get('/users/roles', [RoleController::class, 'index'])->name('roles.index'
 Route::post('/users/roles', [RoleController::class, 'store'])->name('roles.store');
 Route::get('/users/{userId}/delete/{roleId}', [RoleController::class, 'destroy'])->name('roles.delete');
 
-//Aulas
+//Niveles / Años
 Route::middleware('auth')->group(function () {
     Route::get('/classrooms', [LevelsController::class, 'index'])->name('classrooms.index');
     Route::get('/classrooms/edit/{post}', [LevelsController::class, 'edit'])->name('classrooms.edit');
@@ -116,4 +102,4 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });*/
->>>>>>> Stashed changes
+

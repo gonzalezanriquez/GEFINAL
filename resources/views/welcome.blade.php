@@ -1,53 +1,54 @@
 @extends('layouts.app')
-@section('title','GE - Inicio')
+@section('title', 'GE - Inicio')
 
 @section('content')
 
+    <div class="headerwelcome ">
+        <div class="container-fluid bg-header py-5">
+
+            <div class="container ">
+                <div class="row mx-md-5 align-items-center text -xs-center  ">
+                    <div class="col-12 col-lg-6 px-lg-3 pt-lg-4">
 
 
-<<<<<<< Updated upstream
-<div class=" container  vh-100"  >
+                        <h1 class="titulo">Soluciones integrales para tus <span class="highlight ::after">gestiones escolares
+                            </span></h1>
 
-    <div class="container mt-5 pt-5 my-5" id="centrado">
-        <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-          <div class="col-sm-7">
-            <h1 class="display-4 fw-bold lh-1">Gestiones Educativas</h1>
-            <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae nesciunt ullam minus suscipit sit quia quos! Consequatur perferendis quia sapiente cum, quos vero illum, vitae voluptates labore nam saepe quaerat?</p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start ">
-              <button type="button" class="btn btn-warning">Inicia Sesion</button>
-              <button type="button" class="btn btn-outline-secondary px-4">Contactate</button>
-=======
-    <div class=" container  vh-100"  >
+                        <p class="bajadaTitulo mt-5">Te ayudamos a sistematizar todas tus labores administrativas escolares
+                            brindando una respuesta rapida y sencilla a docentes, alumnos y personal escolar. </p>
 
-        <div class="container mt-5 pt-5 my-5" id="centrado">
-            <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                <div class="col-sm-7">
-                    <h1 class="display-4 fw-bold lh-1">Gestiones Educativas</h1>
-                    <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae nesciunt ullam minus suscipit sit quia quos! Consequatur perferendis quia sapiente cum, quos vero illum, vitae voluptates labore nam saepe quaerat?</p>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-start ">
-                        <button type="button" class="btn btn-warning">Inicia Sesion</button>
-                        <button type="button" class="btn btn-outline-secondary px-4">Contactate</button>
+
+
+                        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center justify-content-md-start mt-4">
+                            <button type="button" class="boton btn btn-lg px-4 gap-3 ">
+                                <a class="text-decoration-none"href="{{ route('login') }}" style="color:inherit"
+                                >{{ __('Iniciar Sesion')}}</a>
+                            </button>
+
+                            <button type="button" class="btn btn-outline-secondary btn-lg px-4"><a
+                                    class="text-decoration-none" href="" style="color:inherit">
+                                    Contactanos</a></button>
+
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <img class="img-fluid" src="/img/app2.png" alt="">
                     </div>
                 </div>
-                <div class="col-sm-5  ">
-                    <img class="rounded-lg-3 img-fluid" src="{{asset('img/mac.png')}}" alt="" >
-                </div>
->>>>>>> Stashed changes
+
             </div>
-          </div>
-          <div class="col-sm-5  ">
-             <img class="rounded-lg-3 img-fluid" src="{{asset('img/mac.png')}}" alt="" >
-          </div>
         </div>
-<<<<<<< Updated upstream
-      </div>
-
-
-</div>
-=======
-
-
     </div>
+    </div>
+
+    {{-- cards --}}
+
+
+
+
+
+
 
     {{-- formulario de contacto --}}
     <section class="pt-5  contactForm">
@@ -103,14 +104,12 @@
 
                         <!-- submit -->
                         <div class="text-center">
-                            <input type="submit" name="submit" value="Enviar" class="boton btn ">
+                            <input type="submit" name="submit" value="Enviar" class="boton btn btn-warning">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
->>>>>>> Stashed changes
 
 @endsection
-

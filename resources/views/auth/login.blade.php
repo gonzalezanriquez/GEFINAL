@@ -5,8 +5,6 @@
 
 @section('content')
 
-    @include('nav.loginNav')
-
     <section class="h-100 pt-5">
         <div class="container pt-5">
             <div class="row d-flex justify-content-center align-content-center">
@@ -16,19 +14,13 @@
                             <div class="col-md-6 ">
                                 <div class="card-body ">
 
-<<<<<<< Updated upstream
+
                   <div class="text-center mt-5">
                     <img src="{{asset('img/gelogo.png')}}"
                       style="width: 10rem;" alt="logo">
                     <h4 class="mt-1 mb-5 pb-1">Gestiones Educativas</h4>
                 </div>
-=======
-                                    <div class="text-center mt-5">
-                                        <img src="{{asset('img/gelogo.png')}}"
-                                             style="width: 10rem;" alt="logo">
 
-                                    </div>
->>>>>>> Stashed changes
 
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf

@@ -31,7 +31,7 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
-        
+
         $user = User::find($request->userId);
         $roles = $user->roles()->get();
         $checkRole = $roles->where('id', $request->roles);
@@ -44,9 +44,10 @@ class RoleController extends Controller
         else
         {
             $user->roles()->attach($request->roles);
+            return back();
         }
 
-        return back();
+
     }
 
     public function destroy(Request $request)

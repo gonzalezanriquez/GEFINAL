@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< Updated upstream
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
-=======
+
     <div class="container pt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
->>>>>>> Stashed changes
+
 
                     <div class="card-body">
                         @if (session('status'))
@@ -66,18 +66,13 @@
 
                             </div>
                         </div>
-<<<<<<< Updated upstream
-                    @endif
+
+
 
                     {{ __('You are logged in!') }}
-=======
-
-
-
-
 
                     </div>
->>>>>>> Stashed changes
+
                 </div>
             </div>
         </div>

@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-<<<<<<< Updated upstream
+
 use App\Models\Post;
-=======
->>>>>>> Stashed changes
+
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -22,14 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<int, string>
      */
-<<<<<<< Updated upstream
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-=======
->>>>>>> Stashed changes
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -49,8 +42,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-<<<<<<< Updated upstream
-=======
+
+
 
     public function posts()
     {
@@ -61,5 +54,5 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Role::class, 'users_roles', 'user_id', 'role_id');
     }
->>>>>>> Stashed changes
+
 }
