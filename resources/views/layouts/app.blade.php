@@ -14,12 +14,12 @@
 </head>
 
 <body>
-    <div >
+
         @include('nav.superiornav')
-        <main class="mt-5 pt-5">
+        <main class="mt-5 pt-5 ">
             @yield('content')
         </main>
-    </div>
+
 
     <script src="sweetalert2.all.min.js"></script>
 

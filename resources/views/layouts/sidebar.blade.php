@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
    {{-- PARA PERSONALIZAR LOS TITULOS EN CADA SECCION --}}
     <title>@yield('title')</title>
-    @vite(['resources/sass/app.scss', 'resources/js/app.js','resources/js/j.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 </head>
 

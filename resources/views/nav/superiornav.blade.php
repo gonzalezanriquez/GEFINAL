@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow fixed-top px-3 ">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
           <img class="" src="{{ asset('img/gelogo.png') }}" alt="" height="70rem"></a>
@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse px-3 " id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item"><a href="{{ route('noticias') }}" class="nav-link">Noticias</a></li>

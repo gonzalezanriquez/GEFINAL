@@ -11,7 +11,7 @@
         @foreach ($posts as $post )
         <div class="col">
             <div class="card">
-                <img src="{{asset('img/gelogo.png')}}" class="card-img-top" alt="...">
+                <img src="{{  $post->image_path }}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{$post->title}}</h5>
               <p class="card-text">{{$post->contenido}}</p>
