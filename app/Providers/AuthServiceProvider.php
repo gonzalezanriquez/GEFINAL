@@ -3,7 +3,12 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\LevelsController;
+use App\Models\Post;
+use App\Models\Subject;
+use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +30,18 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('admin', function (User $user) {
+            return $user->username === 'AdminUser';
+        });
+
+        Gate::define('create_user', [User::class, 'store']);
+        Gate::define('create_post', [Post::class, 'store']);
+        Gate::define('create_subject', [Subject::class, 'store']);
+        Gate::define('create_level', [LevelsController::class, 'store']);
+        Gate::define('create_subject', [Post::class, 'store']);
+
+
+        // create_user, create_post, create_subject, create_level, update_user, update_post, update_subject, update_classroom, destroy_user, destroy_post, destroy_role, destroy_subject, destroy_classroom, show_user, show_post, show_postUser, show_subject, show_classroom
+
     }
 }
