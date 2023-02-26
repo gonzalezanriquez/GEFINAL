@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classroom;
+use App\Models\Level;
 use App\Http\Requests\StoreClassroomRequest;
 use App\Http\Requests\UpdateClassroomRequest;
 use App\Models\User;
@@ -52,10 +52,10 @@ class LevelsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Level  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function show(Classroom $classroom)
+    public function show(Level $classroom)
     {
         //
     }
@@ -63,10 +63,10 @@ class LevelsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Level  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function edit(Classroom $classroom)
+    public function edit(Level $classroom)
     {
         //
     }
@@ -75,10 +75,10 @@ class LevelsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateClassroomRequest  $request
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Level  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateClassroomRequest $request, Classroom $classroom)
+    public function update(UpdateClassroomRequest $request, Level $classroom)
     {
         //
     }
@@ -86,10 +86,10 @@ class LevelsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Level  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Classroom $classroom)
+    public function destroy(Level $classroom)
     {
         //
     }

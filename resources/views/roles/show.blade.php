@@ -1,7 +1,5 @@
-<x-layouts.app>
-    @push('css')
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.css"/>
-    @endpush
+@extends('layouts.app')
+
 
     <div class="container">
         <div class="px-4 py-5 my-5 text-center d-flex justify-content-center align-content-center">
@@ -27,4 +25,3 @@
 
         <script src="https://kit.fontawesome.com/48b4b06778.js" crossorigin="anonymous"></script>
 
-</x-layouts.app>

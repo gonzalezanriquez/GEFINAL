@@ -8,11 +8,27 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
+            @auth
             <ul class="navbar-nav me-auto">
-                <li class="nav-item"><a href="{{ route('usersposts.index') }}" class="nav-link">Noticias</a></li>
-                <li class="nav-item"><a href="{{ route('posts.index') }}" class="nav-link">Posts</a></li>
-            </ul>
+                <li class="nav-item dropdown px-3">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle px-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ __('Noticias') }}
+                    </a>
 
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('posts.create')}}">
+                            {{ __('Crear Noticia') }}
+                        </a>
+                        <a class="dropdown-item" href="{{route('posts.index')}}">
+                            {{ __('Editar Noticias') }}
+                        </a>
+                        <a class="dropdown-item" href="{{route('usersposts.index')}}">
+                            {{ __('Ver Noticias') }}
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            @endauth
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
