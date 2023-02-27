@@ -24,16 +24,16 @@ class PostController extends Controller
 
 
         $user = auth()->user();
-        $authotizedRole = $user->roles()->get();
+        // $authotizedRole = $user->roles()->get();
 
-        if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true) {
-            return view('notAuthorized');
-        } else {
-            return view('posts.index', [
-                'posts' => Post::all(),
-                'images' => Image::all(),
-            ]);
-        }
+        // if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true) {
+        //     return view('notAuthorized');
+        // } else {
+        //     return view('posts.index', [
+        //         'posts' => Post::all(),
+        //         'images' => Image::all(),
+        //     ]);
+        // }
 
 
 
@@ -42,15 +42,15 @@ class PostController extends Controller
     public function create()
     {
         $user = auth()->user();
-        $authotizedRole = $user->roles()->get();
+        // $authotizedRole = $user->roles()->get();
 
-        if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true ){
-            return view('notAuthorized');
-        } else {
-            return view('posts.create');
-        }
-    }
-
+    //     if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true ){
+    //         return view('notAuthorized');
+    //     } else {
+    //         return view('posts.create');
+    //     }
+    //
+}
     public function store(Request $request)
     {
 
@@ -80,27 +80,27 @@ class PostController extends Controller
 
 
         $user = auth()->user();
-        $authotizedRole = $user->roles()->get();
+       // $authotizedRole = $user->roles()->get();
 
-        if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true ){
-            return view('notAuthorized');
-        } else {
-            $post = Post::create([
+        // if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true ){
+        //     return view('notAuthorized');
+        // } else {
+        //     $post = Post::create([
 
-                'title' => $request->title,
-                'body' => $request->body,
-                'user_id' => Auth::user()->id,
-                'slug' => Str::random(20),
-            ]);
+        //         'title' => $request->title,
+        //         'body' => $request->body,
+        //         'user_id' => Auth::user()->id,
+        //         'slug' => Str::random(20),
+        //     ]);
 
-            Image::create([
-                'post_id' => $post['id'],
-                'image' => $request->image,
-                'created_by' => $post['user_id']
-            ]);
+        //     Image::create([
+        //         'post_id' => $post['id'],
+        //         'image' => $request->image,
+        //         'created_by' => $post['user_id']
+        //     ]);
 
-            return redirect('/posts');
-        }
+        //     return redirect('/posts');
+        // }
 
 
 
@@ -109,32 +109,33 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $user = auth()->user();
-        $authotizedRole = $user->roles()->get();
+    //     $authotizedRole = $user->roles()->get();
 
-        if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true ){
-            return view('notAuthorized');
-        } else {
-            /*$post = Post::find($id);*/
+    //     if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true ){
+    //         return view('notAuthorized');
+    //     } else {
+    //         /*$post = Post::find($id);*/
 
-            return view('posts.create', [
-                'post' => $post
-            ]);
-        }
-    }
+    //         return view('posts.create', [
+    //             'post' => $post
+    //         ]);
+    //     }
+    //
+}
 
     public function update(Request $request, Post $post)
 
     {
         $user = auth()->user();
-        $authotizedRole = $user->roles()->get();
+        // $authotizedRole = $user->roles()->get();
 
-        if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true ){
-            return view('notAuthorized');
-        } else {
-            $request->validate([
-                'title' => ['required', 'max:255'],
-                'body' => ['required', 'max:255'],
-            ]);
+        // if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true ){
+        //     return view('notAuthorized');
+        // } else {
+        //     $request->validate([
+        //         'title' => ['required', 'max:255'],
+        //         'body' => ['required', 'max:255'],
+        //     ]);
 
             /*$post = Post::find($request->id);*/
 
@@ -145,10 +146,11 @@ class PostController extends Controller
             $post->save();
 
             return redirect('/posts');
-        }
+
 
 
     }
+
 
     public function show()
     {
