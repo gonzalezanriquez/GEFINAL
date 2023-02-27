@@ -10,10 +10,8 @@ class Image extends Model
 {
     use HasFactory;
 
-
-    public function post(): BelongsTo{
-        return $this->belongsTo("posts", "post_id");
-
+    public function post(): BelongsTo
+    {
+        return $this->belongsTo('posts', 'post_id');
     }
-
 }

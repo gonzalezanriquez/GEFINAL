@@ -11,8 +11,10 @@ class Post extends Model
     use HasFactory;
 
 
-    public function images(): HasMany{
-        return $this->hasMany("images", "post_id");
+    public function images(): HasMany
+    {
+        return $this->hasMany('images', 'post_id');
+    }
 
     }
 }
