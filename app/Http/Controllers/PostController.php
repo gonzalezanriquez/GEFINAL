@@ -25,15 +25,14 @@ class PostController extends Controller
 
         $user = auth()->user();
         // $authotizedRole = $user->roles()->get();
-
-        // if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true) {
+        //    if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true) {
         //     return view('notAuthorized');
         // } else {
-        //     return view('posts.index', [
-        //         'posts' => Post::all(),
-        //         'images' => Image::all(),
-        //     ]);
-        // }
+            return view('posts.index', [
+                'posts' => Post::paginate(2),
+                'images' => Image::all(),
+            ]);
+
 
 
 

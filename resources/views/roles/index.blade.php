@@ -1,5 +1,5 @@
-@extends('layouts.app')
-
+@extends('layouts.sidebar')
+@section('content')
     <div class="container  px-4 py-5 my-5 ">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -63,3 +63,4 @@
         </div>
     </div>
 
+@endsection

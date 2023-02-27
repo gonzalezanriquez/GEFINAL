@@ -4,12 +4,6 @@
 
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-    <div class="container pt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -35,7 +29,7 @@
             <div class="card bg-c-blue order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Alumnos</h6>
-                    <h2 class="text-right"><i class="fa  fa-users f-left counter"></i><span>{{$activePosts}}</span></h2>
+                    {{-- <h2 class="text-right"><i class="fa  fa-users f-left counter"></i><span>{{$activePosts}}</span></h2> --}}
                     <p class="m-b-0 counter">Completed Orders<span class="f-right counter">351</span></p>
                 </div>
             </div>
@@ -45,7 +39,7 @@
             <div class="card bg-c-green order-card">
                 <div class="card-block">
                     <h6 class="m-b-20">Noticias</h6>
-                    <h2 class="text-right"><i class="fa fa-newspaper-o f-left"></i><span>{{$activePosts}}</span></h2>
+                    {{-- <h2 class="text-right"><i class="fa fa-newspaper-o f-left"></i><span>{{$activePosts}}</span></h2> --}}
                     <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
                 </div>
             </div>

@@ -10,7 +10,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Noticia</th>
-        <th scope="col d-sm-none d-md-table-cell"></th>
+        <th scope="col d-sm-none d-md-table-cell">ffdgdf</th>
         <th scope="col">Estado</th>
         <th scope="col">edicion</th>
 
@@ -27,7 +27,7 @@
 
         <td  class=" w-50">
             <a href="{{route('posts.edit',$post)}}"class='btn btn-warning'> <i class="bi bi-pen"></i></a>
-            <form class= "d-inline" action="{{route('posts.destroy',$post)}}" method="post">
+            <form class= "d-inline" action="{{--{{route('posts.destroy',$post)}}--}}" method="post">
                 @csrf
                 @method('DELETE')
 
@@ -41,7 +41,7 @@
     </tbody>
   </table>
 </div>
-
+{{--
 
 <div class="container mt-5">
     <table class="table">
@@ -75,20 +75,16 @@
 
             </td>
           </tr>
-          @endforeach
+          @endforeach --}}
         </tbody>
+        {!!$posts->links()!!}
       </table>
     </div>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table').DataTable();
+        } );
+    </script>
 
 @endsection
-<script>
-
-   Swal.fire({
-  title: 'Error!',
-  text: 'Do you want to continue',
-  icon: 'error',
-  confirmButtonText: 'Cool'
-})
-
-</script>
