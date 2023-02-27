@@ -5,7 +5,17 @@ $body-bg: #f8fafc;
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+:root{
+ --fuente: var(--bs-body-font-family);
+}
 
+.fontUsuario{
+    font-size: 1.2rem;;
+}
+
+html{
+    font-family: var(--fuente);
+}
 
 // login
 .gradient-custom-2 {
