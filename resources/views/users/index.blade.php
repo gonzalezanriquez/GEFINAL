@@ -1,11 +1,8 @@
 @extends('layouts.sidebar')
-{{--@push('css')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.css"/>
-@endpush--}}
+
 @section('content')
-<section style="background-color: #eee;">
 <div class="container" >
-    <div class="px-4 py-5 my-5 text-center d-flex justify-content-center align-content-center " >
+    <div class="px-4 text-center d-flex justify-content-center align-content-center " >
 
         <div class="col-md-12">
         {{-- <img class="mx-auto " src="{{asset('/img/news.png')}}"  alt="Image Noticias" height="200px">--}}
@@ -54,15 +51,15 @@
   </div>
   </div>
 
-  </section>
 
-{{--    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>--}}
+<!-- 
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#table').DataTable();
         } );
-    </script>
+    </script> -->
 
 
 @endsection
