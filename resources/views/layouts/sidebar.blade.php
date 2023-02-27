@@ -11,11 +11,7 @@
 </head>
 
 <body>
-    <div >
+ @include('nav.side')
 
-        <main class="">
-            @yield('content')
-        </main>
-    </div>
 </body>
 </html>

@@ -86,6 +86,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/subjects', [SubjectController::class, 'update'])->name('subjects.update');
     Route::put('/subjects/delete/{id}',[SubjectController::class, 'destroy'])->name('subjects.delete');
 });
+Route::post('/contact_us', [App\Http\Controllers\ContactController::class, 'contact_us'])->name("contact_us");
+// Route::get('/contact', function () {return view('welcome');})->name("contact");
+  Route::get('/contact', [App\Http\Controllers\ContactController::class,'contact'])->name('contact');
 
 //Images
 Route::post('/posts/update', [ImageController::class, 'update'])->name('posts.update');

@@ -3,31 +3,15 @@
 
 // Variables
 @import 'variables';
-
-//Bootswatch
-// @import 'bootswatch';
+@import 'cards';
+@import 'sidebar';
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 
-// Bootstrap
-@import 'bootstrap-scss/bootstrap';
 
-// css
-@import 'bootstrap-scss/bootstrap';
-
-
-
-
-
-
-
-
-
-
-
-
-
+@import url("https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js");
 
