@@ -77,6 +77,8 @@ class UserController extends Controller
         $user->password = Hash::make($request['password']);
         $user->updated_at = (new \DateTime())->format('Y-m-d H:i:s');
         $user->save();
+        return redirect('/users');
+
     }
 
     public function update(Request $request, User $user)
@@ -108,6 +110,7 @@ class UserController extends Controller
         } else {
             return redirect('/');
         }
+        return back();
 
     }
     public function destroy($id)

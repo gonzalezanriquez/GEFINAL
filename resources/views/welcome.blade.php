@@ -4,42 +4,21 @@
 @section('content')
 
     <div class="headerwelcome ">
-        <div class="container-fluid bg-header py-5">
-
+        <div class="container-fluid bgheader py-5">
             <div class="container ">
                 <div class="row mx-md-5 align-items-center text -xs-center  ">
                     <div class="col-12 col-lg-6 px-lg-3 pt-lg-4">
-
-
                         <h1 class="titulo">Soluciones integrales para tus <span class="highlight ::after">gestiones escolares
-                            </span></h1>
-
+                            </span> </span></h1>
                         <p class="bajadaTitulo mt-5">Te ayudamos a sistematizar todas tus labores administrativas escolares
                             brindando una respuesta rapida y sencilla a docentes, alumnos y personal escolar. </p>
-
-
-
-                        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center justify-content-md-start mt-4">
-                            <button type="button" class="boton btn btn-lg px-4 gap-3 ">
-                                <a class="text-decoration-none"href="{{ route('login') }}" style="color:inherit"
-                                >{{ __('Iniciar Sesion')}}</a>
-                            </button>
-
-                            <button type="button" class="btn btn-outline-secondary btn-lg px-4"><a
-                                    class="text-decoration-none" href="" style="color:inherit">
-                                    Contactanos</a></button>
-
-                        </div>
-
                     </div>
                     <div class="col-12 col-md-6">
                         <img class="img-fluid" src="/img/app2.png" alt="">
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
     </div>
 
     {{-- cards --}}
@@ -47,10 +26,7 @@
 
 
 
-
-
-
-    {{-- formulario de contacto --}}
+    <!-- submit -->
     <section class="pt-5  contactForm">
         <div class="col-sm-7 col-lg-5 mx-auto">
             <div class="container">

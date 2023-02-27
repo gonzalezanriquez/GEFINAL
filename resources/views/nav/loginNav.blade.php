@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light   fixed-top">
     <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}">Retornar</a>
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{asset('img/gelogo.png')}}"
                  style="width: 5rem;" alt="logo">
@@ -34,6 +35,7 @@
                             </form>
                         </div>
                     </li>
+                @endguest
             </ul>
         </div>
     </div>

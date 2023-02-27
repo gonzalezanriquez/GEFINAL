@@ -2,7 +2,7 @@
 {{--@push('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.css"/>
 @endpush--}}
-
+@section('content')
 <section style="background-color: #eee;">
 <div class="container" >
     <div class="px-4 py-5 my-5 text-center d-flex justify-content-center align-content-center " >
@@ -24,18 +24,18 @@
                         <table id="table" class="table">
                             <thead>
                             <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Email</th>
+                                <th class=" d-none d-xl-table-cell" scope="col ">Id</th>
+                                <th  scope="col">Nombre</th>
+                                <th class=" d-none d-xl-table-cell" scope="col">Email</th>
                                 <th style="text-align: end" scope="col">Acciones</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($users as $user)
                                 <tr>
-                                    <th scope="row">{{$user->id}}</th>
+                                    <th class=" d-none d-xl-table-cell" scope="row">{{$user->id}}</th>
                                     <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
+                                    <td class=" d-none d-xl-table-cell">{{$user->email}}</td>
                                     <td style="text-align: end">
 
                                         <a class="btn btn-danger btn-sm mb-1" href="{{route('users.delete', ['id'=> $user->id])}}">Eliminar</a>
@@ -65,3 +65,4 @@
     </script>
 
 
+@endsection

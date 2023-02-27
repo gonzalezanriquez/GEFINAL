@@ -1,8 +1,6 @@
-@extends('layouts.app')
-    @push('css')
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.css"/>
-    @endpush
+@extends('layouts.sidebar')
 
+@section('content')
     <section class="vh-100 mt-5" style="background-color: #eee;">
         <div class="container px-5 py-5 my-5 ">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -121,4 +119,4 @@
         </div>
     </section>
 
-
+@endsection

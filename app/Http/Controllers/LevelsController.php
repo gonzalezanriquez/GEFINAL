@@ -17,15 +17,15 @@ class LevelsController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $authotizedRole = $user->roles()->get();
+      //  $authotizedRole = $user->roles()->get();
 
 
 
-        if ($authotizedRole->doesntContain('role_name', 'Profesor/a') === true ){
-            return view('notAuthorized');
-        } else {
-            return view('classrooms.index');
-        }
+        // if ($authotizedRole->doesntContain('role_name', 'Profesor/a') === true ){
+        //     return view('notAuthorized');
+        // } else {
+        //     return view('classrooms.index');
+        // }
     }
 
     /**

@@ -27,7 +27,8 @@ Route::view('/architecture', 'architecture')->name('arc');
 
 //Welcome
 Route::view('/','welcome')
-    ->middleware('guest');
+    // ->middleware('guest')
+    ;
 
 //Home
 Route::view('/home','home')->middleware(['auth', 'verified']);
@@ -50,7 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/show', [PostController::class, 'show'])->name('posts.show');
     Route::post('/posts/create', [PostController::class, 'store'])->name('posts.store');
     Route::patch('/posts', [PostController::class, 'update'])->name('posts.update');
-    Route::put('/posts/delete/{id}',[PostController::class, 'destroy'])->name('posts.delete');
+    Route::post('/posts/delete/{id}',[PostController::class, 'destroy'])->name('posts.destroy');
 });
 
 // User Posts
@@ -86,9 +87,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/subjects', [SubjectController::class, 'update'])->name('subjects.update');
     Route::put('/subjects/delete/{id}',[SubjectController::class, 'destroy'])->name('subjects.delete');
 });
+Route::post('/contact_us', [App\Http\Controllers\ContactController::class, 'contact_us'])->name("contact_us");
+// Route::get('/contact', function () {return view('welcome');})->name("contact");
+  Route::get('/contact', [App\Http\Controllers\ContactController::class,'contact'])->name('contact');
 
 //Images
-Route::post('/posts/update', [ImageController::class, 'update'])->name('posts.update');
+//Route::post('/posts/update', [ImageController::class, 'update'])->name('posts.update');
 
 
 require __DIR__.'/auth.php';
