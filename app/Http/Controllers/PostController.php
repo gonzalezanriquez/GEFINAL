@@ -28,7 +28,7 @@ class PostController extends Controller
         //    if ($authotizedRole->doesntContain('role_name', 'Editor/a de Noticias') === true) {
         //     return view('notAuthorized');
         // } else {
-            return view('posts.index', [
+            return view('posts.noticias', [
                 'posts' => Post::paginate(2),
                 'images' => Image::all(),
             ]);

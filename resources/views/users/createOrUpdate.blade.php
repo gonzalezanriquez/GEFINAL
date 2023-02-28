@@ -1,9 +1,9 @@
 @extends('layouts.sidebar')
 
 @section('content')
-    <section class="vh-100 mt-5" style="background-color: #eee;">
-        <div class="container px-5 py-5 my-5 ">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+    <section class="" >
+        <div class="container px-5  ">
+            <div class="row d-flex justify-content-center align-items">
                 <div class="col-lg-12 col-xl-11">
                     <div class="card text-black" style="border-radius: 25px;">
                         <div class="card-body p-md-5">
@@ -23,7 +23,7 @@
                                         </div>
                                     @endif
                                     {{--Aca empieza el fooorm--}}
-                                    <form class="mx-1 mx-md-4" method="POST" action="@if (isset($user))  {{ route('users.update') }} @else {{ route('register') }} @endif">
+                                    <form class="mx-1 mx-md-4" method="POST" action="@if (isset($user))  {{ route('users.update') }} @else {{ route('users.store') }} @endif">
                                         @csrf
 
 
@@ -43,7 +43,7 @@
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="username">{{ __('Username') }}</label>
-                                                <input type="text" id="username" name='username' class="form-control @error('username') is-invalid @enderror" name="email" value="{{ old('username') }}" required autocomplete="email">
+                                                <input type="text" id="username" name='username' class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
 
                                                 @error('username')
                                                 <span class="invalid-feedback" role="alert">

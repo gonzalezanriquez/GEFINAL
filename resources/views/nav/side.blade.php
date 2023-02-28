@@ -17,6 +17,10 @@
                     <a href="{{ url('/posts') }}" class="nav-link " aria-current="page">
                         <i class="bi bi-envelope pe-2"></i> Posteos Internos</a>
                 </li>
+                <li class="{{ Request::is('posts*') ? 'active' : '' }}">
+                    <a href="{{ url('/posts') }}" class="nav-link " aria-current="page">
+                        <i class="bi bi-envelope pe-2"></i> Noticias</a>
+                </li>
                 <li class="{{ Request::is('users*') ? 'active' : '' }}">
                     <a href="{{ url('/users') }}" class="nav-link " aria-current="page">
                         <i class="bi bi-person-add pe-2"></i> Usuarios</a>

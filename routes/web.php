@@ -55,8 +55,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // User Posts
-Route::controller(UserPostController::class)->group(function () {
-   Route::get('/usersposts', 'index')->name('usersposts.index');
+Route::controller(PostController::class)->group(function () {
+   Route::get('/noticias', 'index')->name('noticias');
    Route::get('/usersposts/{post}', 'show');
 });
 

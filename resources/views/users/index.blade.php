@@ -2,40 +2,50 @@
 
 @section('content')
 <div class="container">
-    <div class="px-4 text-center d-flex justify-content-center align-content-center ">
+    <div class="px-4 ">
 
         <div class="col-md-12">
             {{-- <img class="mx-auto" src="{{asset('/img/news.png')}}" alt="Image Noticias" height="200px">--}}
 
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex justify-content-center my-4">
+                    <div class=" text-center   my-2">
                         <h1>Lista de Usuarios</h1>
+                        <a class="btn btn-dark btn-sm mb-3" href="{{route('users.create')}}">
+                            Crear Nuevo Usuario
+                        </a>
                     </div>
 
-                    <a class="btn btn-dark btn-sm mb-4" href="{{route('users.create')}}">
-                        Crear Nuevo Usuario
-                    </a>
 
                     <!-- TABLA -->
                     <table id="table" class="table">
                         <thead>
-                            <tr>
+                            <tr class="text-center   ">
                                 <th class=" d-none d-xl-table-cell" scope="col ">Id</th>
                                 <th scope="col">Nombre</th>
                                 <th class=" d-none d-xl-table-cell" scope="col">Email</th>
-                                <th class=" d-none d-xl-table-cell" scope="col">Rol</th>
+                                {{-- <th class=" d-none d-xl-table-cell" scope="col">Rol</th> --}}
                                 <th style="text-align: end" scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($users as $user)
                             <tr>
-                                <th class=" d-none d-xl-table-cell" scope="row">{{$user->id}}</th>
+                                <th class=" d-none d-xl-table-cell text-center   " scope="row">{{$user->id}}</th>
                                 <td>{{$user->name}}</td>
                                 <td class=" d-none d-xl-table-cell">{{$user->email}}</td>
-                                <td class=" d-none d-xl-table-cell">{{$user->roleId}}</td>
-                                <td style="text-align: end">
+
+{{--
+                                <td class=" d-none d-xl-table-cell">
+                                    {{$userRoles = $user->roles()->get()}}
+                                    @foreach ( $userRoles as $userRol )
+
+                                    {{$user->contains($user->id)}}
+                                    @endforeach
+                                </td> --}}
+
+
+                                <td class="text-end">
                                     <!-- EDITAR -->
                                     <a class="btn btn-success btn-sm mb-1" href="{{route('users.edit', ['id'=>$user->id])}}">
                                         <i class=" bi bi-pencil "></i></a>
@@ -59,14 +69,7 @@
 </div>
 
 
-<!-- 
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#table').DataTable();
-        } );
-    </script> -->
+
 
 
 @endsection

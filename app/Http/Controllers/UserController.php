@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class UserController extends Controller
 
         $authotizedRole = $user->roles()->get();
 
-        if ($authotizedRole->doesntContain('role_name', 'Administrador/a') === true ){
+        if ($authotizedRole->doesntContain('role_name', 'Administrador/a') === true) {
             return view('notAuthorized');
         } else {
             return view('users.createOrUpdate');
@@ -31,60 +32,58 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
+        $roles = Role::all();
+
         $authotizedRole = $user->roles()->get();
 
-        if ($authotizedRole->doesntContain('role_name', 'Administrador/a') === true ){
+        if ($authotizedRole->doesntContain('role_name', 'Administrador/a') === true) {
             return view('notAuthorized');
         } else {
             return view('users.index', [
                 'users' => User::paginate(10),
+                'roles' => $roles,
             ]);
         }
     }
 
     public function edit(Request $request)
     {
-
-
-         $user = User::find($request->id);
+        $user = User::find($request->id);
 
         return view('users.createOrUpdate', [
             'id' => $user->id,
             'name' => $user->name,
             'username' => $user->username,
-            'email' => $user->email
+            'email' => $user->email,
         ])->with('user', $user);
     }
 
-    public function store(Request $request, User $user)
+    public function store(Request $request)
     {
 
-        if (! Gate::allows('create-user', $user)) {
-            abort(403);
-        }
 
         $request->validate([
-            'userId'=> 'required|gt:0',
-            'name'=> 'required|max:255',
+            'name' => 'required|max:255',
             'username' => ['required', 'max:255'],
-            'email'=> 'required',
-            'password'=> 'required|confirmed|min:8|max:30'
+            'email' => 'required',
+            'password' => 'required|confirmed|min:8|max:30',
         ]);
 
-        $user->name = $request['name'];
-        $user->username = $request['username'];
-        $user->email = $request['email'];
-        $user->password = Hash::make($request['password']);
-        $user->updated_at = (new \DateTime())->format('Y-m-d H:i:s');
-        $user->save();
-        return redirect('/users');
 
+        User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password'  =>  Hash::make($request['password']),
+            'updated_at'  =>  (new \DateTime())->format('Y-m-d H:i:s'),
+        ]);
+
+        return redirect('/users');
     }
 
     public function update(Request $request, User $user)
-
     {
-        if (! Gate::allows('update-user', $user)) {
+        if (!Gate::allows('update-user', $user)) {
             abort(403);
         }
 
@@ -92,10 +91,10 @@ class UserController extends Controller
         $authotizedRole = $userAuth->roles()->get();
 
         $request->validate([
-            'name'=> 'required|max:255',
+            'name' => 'required|max:255',
             'username' => ['required', 'max:255'],
-            'email'=> ['required', 'max:255'],
-            'password'=> 'required|confirmed|min:8|max:30'
+            'email' => ['required', 'max:255'],
+            'password' => 'required|confirmed|min:8|max:30',
         ]);
 
         $user->name = $request['name'];
@@ -111,7 +110,6 @@ class UserController extends Controller
             return redirect('/');
         }
         return back();
-
     }
     public function destroy($id)
     {

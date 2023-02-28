@@ -1,17 +1,11 @@
 @extends('layouts.sidebar')
 
 @section('content')
-
-
 <div class="container fuente">
     <div class="row justify-content-center ">
         <div class="col-md-9">
             <div class="card">
-                <div class="card-header fontUsuario">{{ __('Dashboard') }}
-
-                </div>
-
-
+                <div class="card-header fontUsuario">{{ __('Dashboard') }}</div>
                 <div class="animate__animated  animate__fadeIn pt-3 px-3">
                     @if (session('status'))
                     <div class="nombreUsuario card-body animate__animated  animate__fadeIn">
@@ -31,8 +25,9 @@
                             <div class="col-md-6 col-xl-4">
                                 <div class="card bg-c-blue order-card">
                                     <div class="card-block">
-                                        <h6 class="m-b-20">ALUMNOS</h6>
-                                        <h2 class="text-right"><i class="bi bi-people pe-3"></i><span class="">125</span></h2>
+                                        <h5 class="m-b-20">ALUMNOS</h5>
+                                        <h2 class="text-right"><i class="bi bi-people pe-3"></i><span
+                                                class="">125</span></h2>
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +36,9 @@
                                 <div class="card bg-c-green order-card">
                                     <div class="card-block">
                                         <h5 class="">NOTICIAS</h5>
-                                        <h2 class="text-right"><i class="bi bi-chat-right-text pe-3"></i><span>325</span></h2>
+                                        <h2 class="text-right"><i
+                                                class="bi bi-chat-right-text pe-3"></i><span>325</span>
+                                        </h2>
                                         <!-- {{-- <h2 class="text-right"><i class="fa fa-newspaper-o f-left"></i><span>{{$activePosts}}</span></h2> --}} -->
                                     </div>
                                 </div>
@@ -50,9 +47,10 @@
                             <div class="col-md-6 col-xl-4">
                                 <div class="card bg-c-yellow order-card">
                                     <div class="card-block">
-                                        <h6 class="m-b-20">Docentes</h6>
-                                        <h2 class="text-right"><i class="bi bi-people pe-3"></i><span>325</span></h2>
-
+                                        <div class="datetime">
+                                            <div class="h2 time "></div>
+                                            <div class="h5 date"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -61,14 +59,11 @@
 
                 </div>
             </div>
-        </div>
-        <div class="col-md-1">
-            <div class="card">
-                <div class="card-header fontUsuario">{{ __('Dashboard') }}
 
-                </div>
-            </div>
         </div>
     </div>
 </div>
+    </div>
+</div>
+
 @endsection
