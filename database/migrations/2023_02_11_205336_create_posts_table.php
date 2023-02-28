@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('body');
             $table->softDeletes();
-            $table->dropSoftDeletes();
             $table->integer('updated_by')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
