@@ -31,6 +31,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @if(isset($users))
                             @foreach($users as $user)
                             <tr>
                                 <th class=" d-none d-xl-table-cell text-center d-flex align-item-center" scope="row">{{$user->id}}</th>
@@ -44,7 +45,34 @@
                                     @endif
                                 </td>
 
+                                @elseif(isset($profesores))
+                                @foreach($profesores as $profesor)
+                                <tr>
+                                    <th class=" d-none d-xl-table-cell text-center   " scope="row">{{$profesores->id}}</th>
+                                    <td>{{$profesores->name}}</td>
+                                    <td class=" d-none d-xl-table-cell">{{$profesores->email}}</td>
+                                    <td class=" d-none d-xl-table-cell">
+                                        @if(!$profesores->roles->isEmpty())
+                                            {{$profesores->roles->pluck('role_name')}}
+                                        @else
+                                            No hay roles asignados
+                                        @endif
+                                    </td>
 
+                                    @elseif(isset($alumnos))
+                                    @foreach($alumnos as $alumno)
+                                <tr>
+                                    <th class=" d-none d-xl-table-cell text-center   " scope="row">{{$alumnos->id}}</th>
+                                    <td>{{$alumnos->name}}</td>
+                                    <td class=" d-none d-xl-table-cell">{{$alumnos->email}}</td>
+                                    <td class=" d-none d-xl-table-cell">
+                                        @if(!$alumnos->roles->isEmpty())
+                                            {{$alumnos->roles->pluck('role_name')}}
+                                        @else
+                                            No hay roles asignados
+                                        @endif
+                                    </td>
+                                    @endif
                                 <td class="text-end">
                                     <!-- EDITAR -->
                                     <a class="btn btn-success btn-sm mb-1" href="{{route('users.edit', ['id'=>$user->id])}}">

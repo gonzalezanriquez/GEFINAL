@@ -43,6 +43,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/users/delete/{id}',[UserController::class, 'destroy'])->name('users.delete');
 });
 
+//Professors n' Students
+Route::get('/profesores', [UserController::class, 'index'])->name('profesores.index');
+Route::get('/alumnos', [UserController::class, 'index'])->name('alumnos.index');
+
 //Posts
 Route::middleware('auth')->group(function () {
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');

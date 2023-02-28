@@ -18,10 +18,9 @@ class UserController extends Controller
     public function create(): View
     {
         $user = auth()->user();
+        $authotizedRoles = $user->roles;
 
-        $authotizedRole = $user->roles()->get();
-
-        if ($authotizedRole->doesntContain('role_name', 'Administrador') === true) {
+        if ($authotizedRoles->doesntContain('role_name', 'Administrador') === true) {
             return view('notAuthorized');
         } else {
             return view('users.createOrEdit');
@@ -36,12 +35,17 @@ class UserController extends Controller
     {
 
         $user = auth()->user();
+        $authotizedRoles = $user->roles;
 
-        $authotizedRole = $user->roles()->get();
-
-        if ($authotizedRole->doesntContain('role_name', 'Administrador') === true) {
+        if ($authotizedRoles->doesntContain('role_name', 'Administrador') === true) {
             return view('notAuthorized');
-        } else {
+        } else if($authotizedRoles->Contains('role_name', 'Profesor') === true) {
+            return view('profesores.index', [
+                'profesores' => Role::where('role_name')
+            ]);
+        }
+        else
+        {
             return view('users.index', [
                 'users' => User::paginate(10),
                 'roles' => Role::all(),
@@ -64,52 +68,59 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
+        $user = auth()->user();
+        $authotizedRoles = $user->roles;
+        if ($authotizedRoles->doesntContain('role_name', 'Administrador') === true) {
+            return view('notAuthorized');
+        } else {
+            $request->validate([
+                'name' => 'required|max:255',
+                'username' => ['required', 'max:255'],
+                'email' => 'required',
+                'password' => 'required|confirmed|min:8|max:30',
+            ]);
 
-        $request->validate([
-            'name' => 'required|max:255',
-            'username' => ['required', 'max:255'],
-            'email' => 'required',
-            'password' => 'required|confirmed|min:8|max:30',
-        ]);
 
+            User::create([
+                'name' => $request->name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'password'  =>  Hash::make($request['password']),
+                'updated_at'  =>  (new \DateTime())->format('Y-m-d H:i:s'),
+            ]);
 
-        User::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'password'  =>  Hash::make($request['password']),
-            'updated_at'  =>  (new \DateTime())->format('Y-m-d H:i:s'),
-        ]);
+            return redirect('/users')->with('message', 'Se ha creado un nuevo usuario con exito');
+        }
 
-        return redirect('/users')->with('message', 'Se ha creado un nuevo usuario con exito');
     }
 
     public function update(Request $request, User $user)
     {
 
-        $userAuth = auth()->user();
-        $authotizedRole = $userAuth->roles()->get();
+        $user = auth()->user();
+        $authotizedRoles = $user->roles;
 
-        $request->validate([
-            'name' => 'required|max:255',
-            'username' => ['required', 'max:255'],
-            'email' => ['required', 'max:255'],
-            'password' => 'required|confirmed|min:8|max:30',
-        ]);
-
-        $user->name = $request['name'];
-        $user->username = $request['username'];
-        $user->email = $request['email'];
-        $user->password = Hash::make($request['password']);
-        $user->updated_at = (new \DateTime())->format('Y-m-d H:i:s');
-        $user->save();
-
-        if ($authotizedRole->contains('Administrador/a')) {
-            return redirect('/users');
+        if ($authotizedRoles->doesntContain('role_name', 'Administrador') === true) {
+            return view('notAuthorized');
         } else {
-            return redirect('/');
+            $request->validate([
+                'name' => 'required|max:255',
+                'username' => ['required', 'max:255'],
+                'email' => ['required', 'max:255'],
+                'password' => 'required|confirmed|min:8|max:30',
+            ]);
+
+            $user->name = $request['name'];
+            $user->username = $request['username'];
+            $user->email = $request['email'];
+            $user->password = Hash::make($request['password']);
+            $user->updated_at = (new \DateTime())->format('Y-m-d H:i:s');
+            $user->save();
+
+            return redirect('/users');
+
+
         }
-        return back();
     }
 
 

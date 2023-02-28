@@ -37,5 +37,12 @@ class RolesSeeder extends Seeder
 
 
         ]);
+
+        DB::Table('roles')->insert([
+            'role_name' => 'Alumno',
+            'created_at' => (new \DateTime())->format('Y-m-d H:i:s'),
+
+
+        ]);
     }
 }
