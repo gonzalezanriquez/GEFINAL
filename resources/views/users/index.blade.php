@@ -1,17 +1,15 @@
 @extends('layouts.sidebar')
 
 @section('content')
-<div class="container">
-    <div class="px-4 ">
-
-        <div class="col-md-12">
-            {{-- <img class="mx-auto" src="{{asset('/img/news.png')}}" alt="Image Noticias" height="200px">--}}
-
+    <div class="row justify-content-center animate__animated animate__zoomIn">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
-                    <div class=" text-center   my-2">
+                    <div class=" text-center my-2">
+                        <img  class="" src="{{asset('/img/crearUsuario.png')}}" alt="Lista Usuarios" height="">
                         <h1>Lista de Usuarios</h1>
-                        <a class="btn btn-dark btn-sm mb-3" href="{{route('users.create')}}">
+                        <a class="btn btn-dark  mb-3" href="{{route('users.create')}}">
+                        <i class="bi bi-person-add"></i>
                             Crear Nuevo Usuario
                         </a>
                     </div>
@@ -35,14 +33,14 @@
                         <tbody>
                             @foreach($users as $user)
                             <tr>
-                                <th class=" d-none d-xl-table-cell text-center   " scope="row">{{$user->id}}</th>
+                                <th class=" d-none d-xl-table-cell text-center d-flex align-item-center" scope="row">{{$user->id}}</th>
                                 <td>{{$user->name}}</td>
                                 <td class=" d-none d-xl-table-cell">{{$user->email}}</td>
-                                <td class=" d-none d-xl-table-cell">
+                                <td class=" d-none d-xl-table-cell text-center">
                                     @if(!$user->roles->isEmpty())
-                                        {{$user->roles->pluck('role_name')}}
+                                    <span class="badge bg-info"> {{$user->roles->pluck('role_name')}} </span>
                                     @else
-                                    No hay roles asignados
+                                    <span class="badge bg-danger">Sin Asignar</span>
                                     @endif
                                 </td>
 
@@ -55,17 +53,9 @@
                                     <a class="btn btn-warning btn-sm mb-1" href="{{route('roles.index', ['id'=>$user->id])}}">
                                         <i class=" bi bi-person-vcard "></i></a>
                                     <!-- DELETE -->
-                                    <!-- <a class="btn btn-danger btn-sm mb-1" href="{{route('users.delete', ['id'=> $user->id])}}">
-                                        <i class=" bi bi-trash "></i></a> -->
+                                    <a class="btn btn-danger btn-sm mb-1" href="{{route('users.delete', ['id'=> $user->id])}}">
+                                        <i class=" bi bi-trash "></i></a>
 
-                                        <form method="POST" action="{{route('users.delete', ['id'=> $user->id])}}">
-                                            @csrf
-                                            @method('delete')
-
-                                            <button type='submit' class="text-inverse" data-toggle="tooltip">
-                                              <i class="fa fa-trash"></i>
-                                            </button>
-                                            </form>
 
                                 </td>
                             </tr>
@@ -77,7 +67,6 @@
             </div>
         </div>
     </div>
-</div>
 
 
 
