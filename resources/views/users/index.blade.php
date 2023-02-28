@@ -55,8 +55,17 @@
                                     <a class="btn btn-warning btn-sm mb-1" href="{{route('roles.index', ['id'=>$user->id])}}">
                                         <i class=" bi bi-person-vcard "></i></a>
                                     <!-- DELETE -->
-                                    <a class="btn btn-danger btn-sm mb-1" href="{{route('users.delete', ['id'=> $user->id])}}">
-                                        <i class=" bi bi-trash "></i></a>
+                                    <!-- <a class="btn btn-danger btn-sm mb-1" href="{{route('users.delete', ['id'=> $user->id])}}">
+                                        <i class=" bi bi-trash "></i></a> -->
+
+                                        <form method="POST" action="{{route('users.delete', ['id'=> $user->id])}}">
+                                            @csrf
+                                            @method('delete')
+
+                                            <button type='submit' class="text-inverse" data-toggle="tooltip">
+                                              <i class="fa fa-trash"></i>
+                                            </button>
+                                            </form>
 
                                 </td>
                             </tr>

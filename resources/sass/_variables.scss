@@ -1,11 +1,18 @@
-// Body
+// VARIABLES
 $body-bg: #f8fafc;
 $amarillo:#fbcf33;
+$rojoQuote: #8c1515;
+$quoteText:#ffffff;
+$positionQuote:center;
+$fuente: var(--bs-body-font-family);
+$fontFamily:$fuente;
+
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
 :root{
  --fuente: var(--bs-body-font-family);
 }
@@ -17,6 +24,10 @@ $line-height-base: 1.6;
 html{
     font-family: var(--fuente);
 }
+
+
+
+
 
 // login
 .gradient-custom-2 {
