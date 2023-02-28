@@ -56,12 +56,10 @@ class UserController extends Controller
         ])->with('user', $user);
     }
 
-    public function store(Request $request, User $user)
+    public function store(Request $request)
     {
 
-        if (! Gate::allows('create-user', $user)) {
-            abort(403);
-        }
+        $user = User::find('id');
 
         $request->validate([
             'userId'=> 'required|gt:0',
