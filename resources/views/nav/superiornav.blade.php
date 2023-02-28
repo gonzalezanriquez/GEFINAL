@@ -22,7 +22,7 @@
                         <a class="dropdown-item" href="{{route('posts.index')}}">
                             {{ __('Editar Noticias') }}
                         </a>
-                        <a class="dropdown-item" href="{{route('usersposts.index')}}">
+                        <a class="dropdown-item" href="{{route('posts.index')}}">
                             {{ __('Ver Noticias') }}
                         </a>
                     </div>

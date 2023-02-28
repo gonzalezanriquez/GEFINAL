@@ -10,7 +10,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">@if(isset($user)) {{ __('Editar Usuario') }} @else {{ __('Crear Usuario') }}@endif</p>
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">@if (isset($user)) {{ __('Editar Usuario')  }} @else {{ __('Crear Usuario') }}@endif</p>
 
                                     <!--muestra errores de validacion de backend-->
                                     @if ($errors->any())
@@ -23,14 +23,14 @@
                                         </div>
                                     @endif
                                     {{--Aca empieza el fooorm--}}
-                                    <form class="mx-1 mx-md-4" method="POST" action="@if (isset($user))  {{ route('users.update') }} @else {{ route('users.store') }} @endif">
+                                    <form class="mx-1 mx-md-4" method="POST" action="@if(isset($user)) {{ route('users.store') }} @else {{ route('users.store') }} @endif">
                                         @csrf
 
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="name">{{ __('Nombre') }}</label>
-                                                <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                                <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? isset($user) ? $user->name:null }}"  required autocomplete="name" autofocus>
 
                                                 @error('name')
                                                 <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="username">{{ __('Username') }}</label>
-                                                <input type="text" id="username" name='username' class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
+                                                <input type="text" id="username" name='username' class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') ?? isset($user) ? $user->username:null }}" required autocomplete="username">
 
                                                 @error('username')
                                                 <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="email">{{ __('Email') }}</label>
-                                                <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                                <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? isset($user) ? $user->email:null }}" required autocomplete="email">
 
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">

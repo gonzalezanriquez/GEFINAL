@@ -15,7 +15,11 @@
                             Crear Nuevo Usuario
                         </a>
                     </div>
-
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
 
                     <!-- TABLA -->
                     <table id="table" class="table">
@@ -24,7 +28,7 @@
                                 <th class=" d-none d-xl-table-cell" scope="col ">Id</th>
                                 <th scope="col">Nombre</th>
                                 <th class=" d-none d-xl-table-cell" scope="col">Email</th>
-                                {{-- <th class=" d-none d-xl-table-cell" scope="col">Rol</th> --}}
+                                 <th class=" d-none d-xl-table-cell" scope="col">Rol</th>
                                 <th style="text-align: end" scope="col">Acciones</th>
                             </tr>
                         </thead>
@@ -34,15 +38,13 @@
                                 <th class=" d-none d-xl-table-cell text-center   " scope="row">{{$user->id}}</th>
                                 <td>{{$user->name}}</td>
                                 <td class=" d-none d-xl-table-cell">{{$user->email}}</td>
-
-{{--
                                 <td class=" d-none d-xl-table-cell">
-                                    {{$userRoles = $user->roles()->get()}}
-                                    @foreach ( $userRoles as $userRol )
-
-                                    {{$user->contains($user->id)}}
-                                    @endforeach
-                                </td> --}}
+                                    @if(!$user->roles->isEmpty())
+                                        {{$user->roles->pluck('role_name')}}
+                                    @else
+                                    No hay roles asignados
+                                    @endif
+                                </td>
 
 
                                 <td class="text-end">

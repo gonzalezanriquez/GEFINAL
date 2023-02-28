@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('slug')->unique();
             $table->text('body');
-            $table->boolean('isVisible')->default(true);
+            $table->softDeletes();
+            $table->dropSoftDeletes();
             $table->integer('updated_by')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

@@ -18,21 +18,21 @@ class RolesSeeder extends Seeder
     public function run()
     {
         DB::Table('roles')->insert([
-            'role_name' => 'Administrador/a',
+            'role_name' => 'Administrador',
             'created_at' => (new \DateTime())->format('Y-m-d H:i:s'),
 
 
         ]);
 
         DB::Table('roles')->insert([
-            'role_name' => 'Editor/a de Noticias',
+            'role_name' => 'Editor de Noticias',
             'created_at' => (new \DateTime())->format('Y-m-d H:i:s'),
 
 
         ]);
 
         DB::Table('roles')->insert([
-            'role_name' => 'Profesor/a',
+            'role_name' => 'Profesor',
             'created_at' => (new \DateTime())->format('Y-m-d H:i:s'),
 
 

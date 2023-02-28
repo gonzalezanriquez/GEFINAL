@@ -21,27 +21,30 @@ class UserController extends Controller
 
         $authotizedRole = $user->roles()->get();
 
-        if ($authotizedRole->doesntContain('role_name', 'Administrador/a') === true) {
+        if ($authotizedRole->doesntContain('role_name', 'Administrador') === true) {
             return view('notAuthorized');
         } else {
-            return view('users.createOrUpdate');
+            return view('users.createOrEdit');
         }
     }
 
+
+
+
+
     public function index()
     {
-        $user = auth()->user();
 
-        $roles = Role::all();
+        $user = auth()->user();
 
         $authotizedRole = $user->roles()->get();
 
-        if ($authotizedRole->doesntContain('role_name', 'Administrador/a') === true) {
+        if ($authotizedRole->doesntContain('role_name', 'Administrador') === true) {
             return view('notAuthorized');
         } else {
             return view('users.index', [
                 'users' => User::paginate(10),
-                'roles' => $roles,
+                'roles' => Role::all(),
             ]);
         }
     }
@@ -50,7 +53,7 @@ class UserController extends Controller
     {
         $user = User::find($request->id);
 
-        return view('users.createOrUpdate', [
+        return view('users.createOrEdit', [
             'id' => $user->id,
             'name' => $user->name,
             'username' => $user->username,
@@ -78,14 +81,11 @@ class UserController extends Controller
             'updated_at'  =>  (new \DateTime())->format('Y-m-d H:i:s'),
         ]);
 
-        return redirect('/users');
+        return redirect('/users')->with('message', 'Se ha creado un nuevo usuario con exito');
     }
 
     public function update(Request $request, User $user)
     {
-        if (!Gate::allows('update-user', $user)) {
-            abort(403);
-        }
 
         $userAuth = auth()->user();
         $authotizedRole = $userAuth->roles()->get();
@@ -111,9 +111,11 @@ class UserController extends Controller
         }
         return back();
     }
+
+
     public function destroy($id)
     {
-        DB::table('users')->delete($id);
+        User::findOrFail($id)->delete();
 
         return redirect('/users');
     }
