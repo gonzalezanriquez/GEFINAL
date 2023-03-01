@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class=" text-center   my-2">
-                        <h1>Lista de Alumnos</h1>
+                        <h1>Lista de {{$title}}</h1>
                     </div>
                     @if(session()->has('message'))
                         <div class="alert alert-success">

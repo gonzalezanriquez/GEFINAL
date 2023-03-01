@@ -26,8 +26,6 @@ class UserController extends Controller
     public function index()
     {
 
-
-
             return view('users.index', [
                 'users' => User::paginate(10),
             ]);
@@ -39,21 +37,13 @@ class UserController extends Controller
         $user = User::find($request->id);
 
         return view('users.createOrEdit', [
-            'id' => $user->id,
-            'name' => $user->name,
-            'username' => $user->username,
-            'email' => $user->email,
-        ])->with('user', $user);
+            'user' => $user,
+        ]);
     }
 
     public function store(Request $request)
     {
 
-        $user = auth()->user();
-        $authotizedRoles = $user->roles;
-        if ($authotizedRoles->doesntContain('role_name', 'Administrador') === true) {
-            return view('notAuthorized');
-        } else {
             $request->validate([
                 'name' => 'required|max:255',
                 'username' => ['required', 'max:255'],
@@ -70,20 +60,15 @@ class UserController extends Controller
                 'updated_at'  =>  (new \DateTime())->format('Y-m-d H:i:s'),
             ]);
 
-            return redirect('/users')->with('message', 'Se ha creado un nuevo usuario con exito');
-        }
+            return redirect('/users')->with('message', 'Se ha creado un nuevo usuario con exito!');
+
 
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
 
-        $user = auth()->user();
-        $authotizedRoles = $user->roles;
-
-        if ($authotizedRoles->doesntContain('role_name', 'Administrador') === true) {
-            return view('notAuthorized');
-        } else {
+            $user = User::findOrFail($id);
             $request->validate([
                 'name' => 'required|max:255',
                 'username' => ['required', 'max:255'],
@@ -98,10 +83,7 @@ class UserController extends Controller
             $user->updated_at = (new \DateTime())->format('Y-m-d H:i:s');
             $user->save();
 
-            return redirect('/users');
-
-
-        }
+            return redirect('/users')->with('message', 'Se ha actualizado el perfil con !');
     }
 
 
@@ -109,6 +91,6 @@ class UserController extends Controller
     {
         User::findOrFail($id)->delete();
 
-        return redirect('/users');
+        return redirect('/users')->with('message', 'Se ha eliminado el perfil exitosamente!');
     }
 }

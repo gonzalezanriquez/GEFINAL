@@ -14,31 +14,41 @@
                 </li>
 
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
+                    <a href="{{ route('noticiasexternas.index', ['mode' => $mode = 'Externas']) }}" class="nav-link " aria-current="page">
+                        <i class="bi bi-envelope pe-2"></i> Noticias Externas</a>
+
+                @hasanyrole('administrador|profesor|alumno')
+
+                <li class="{{ Request::is('posts*') ? 'active' : '' }}">
                     <a href="{{ route('noticiasexternas.index', ['mode' => $mode = 'Internas']) }}" class="nav-link " aria-current="page">
                         <i class="bi bi-envelope pe-2"></i> Noticias Internas</a>
                 </li>
-                <li class="{{ Request::is('posts*') ? 'active' : '' }}">
-                    <a href="{{ route('noticiasexternas.index', ['mode' => $mode = 'Externas']) }}" class="nav-link " aria-current="page">
+                @endhasanyrole
+                @hasanyrole('administrador|editor')
 
-                        <i class="bi bi-envelope pe-2"></i> Noticias Externas</a>
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
                     <a href="{{ route('posts.index') }}" class="nav-link " aria-current="page">
                         <i class="bi bi-envelope pe-2"></i> Posteos</a>
                 </li>
+                @endhasanyrole
+                @hasrole('administrador')
                 <li class="{{ Request::is('users*') ? 'active' : '' }}">
-                    <a href="{{ url('/users') }}" class="nav-link " aria-current="page">
+                    <a href="{{ route('users.index') }}" class="nav-link " aria-current="page">
                         <i class="bi bi-person-add pe-2"></i> Usuarios</a>
                 </li>
-
+                @endhasrole
+                @hasanyrole('administrador|profesor|alumno')
                 <li class="{{ Request::is('profesores*') ? 'active' : '' }}">
-                    <a href="{{ url('/profesores') }}" class="nav-link " aria-current="page">
+                    <a href="{{ route('profesores.index') }}" class="nav-link " aria-current="page">
                         <i class="bi bi-mortarboard pe-2"></i> Profesores</a>
                 </li>
+                @endhasanyrole
+                @hasanyrole('administrador|profesor')
                 <li class="{{ Request::is('alumnos*') ? 'active' : '' }}">
-                    <a href="{{ url('/alumnos') }}" class="nav-link " aria-current="page">
+                    <a href="{{ route('alumnos.index') }}" class="nav-link " aria-current="page">
                         <i class="bi bi-person-vcard pe-2"></i> Alumnos</a>
                 </li>
-
+                @endhasanyrole
                 <!-- Cierre de Sesion -->
                 <li class=""><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="bi bi-power pe-2"></i> Cerrar Sesion</a>

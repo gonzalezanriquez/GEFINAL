@@ -23,9 +23,14 @@
                                 </div>
                                 @endif
                                 {{--Aca empieza el fooorm--}}
-                                <form class="mx-1 mx-md-4" method="POST" action="@if(isset($user)) {{ route('users.store') }} @else {{ route('users.store') }} @endif">
+                                @if(isset($user))
+                                <form class="mx-1 mx-md-4" method="POST" action=" {{ route('users.update', $user->id)}}">
                                     @csrf
-
+                                    @method('PATCH')
+                                    @else
+                                    <form class="mx-1 mx-md-4" method="POST" action=" {{ route('users.store') }}">
+                                        @csrf
+                                        @endif
 
                                     <div class="d-flex flex-row align-items-center mb-4">
                                         <div class="form-outline flex-fill mb-0">
@@ -94,10 +99,15 @@
 
                                     <div class="row ">
                                         <div class="col">
+                                            @if (isset($user))
                                             <button type="submit" class="btn btn-primary">
-                                                @if (isset($user)) {{ __('Guardar cambios') }} @else {{ __('Crear') }}@endif
+                                                 {{ __('Guardar cambios') }}
                                             </button>
-
+                                            @else
+                                                <button type="submit" class="btn btn-primary">
+                                                    {{ __('Crear') }}
+                                                </button>
+                                            @endif
                                             <div class="row mb-0">
                                                 <div class="col-12 text-center">
                                                     <a class="btn btn-secondary" href="{{route('users.index')}}"><i class="bi bi-arrow-left-square"></i> </a>

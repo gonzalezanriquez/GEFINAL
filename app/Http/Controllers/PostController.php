@@ -54,7 +54,7 @@ class PostController extends Controller
 
         ]);
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('message','La noticia se ha creado exitosamente');
 
 
     }
@@ -89,7 +89,7 @@ class PostController extends Controller
             $post->updated_at = (new DateTime())->format('Y-m-d H:i:s');
             $post->save();
 
-            return redirect('/posts');
+            return redirect('/posts')->with('message','La noticia ha sido actualizada exitosamente');
     }
 
     public function show()
@@ -104,7 +104,7 @@ class PostController extends Controller
     {
         Post::findOrFail($id)->delete();
 
-        return redirect('/posts')->with('success','La noticia ha sido borrada exitosamente');;
+        return redirect('/posts')->with('message','La noticia ha sido borrada exitosamente');;
     }
 
 }

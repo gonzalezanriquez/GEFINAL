@@ -1,13 +1,11 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LevelsController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
-
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\UserRoleController;
@@ -40,13 +38,13 @@ Route::middleware(['auth', 'role:administrador'])->group(function () {
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/users/create', [UserController::class, 'store'])->name('users.store');
     Route::get('/users/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::patch('/users/update', [UserController::class, 'update'])->name('users.update');
+    Route::patch('/users/{id}', [UserController::class, 'update'])->name('users.update');
     Route::put('/users/delete/{id}',[UserController::class, 'destroy'])->name('users.delete');
 });
 
 //Professors n' Students
-Route::get('/profesores', [UserController::class, 'index'])->middleware(['auth', 'role:profesor'])->name('profesores.index');
-Route::get('/alumnos', [UserController::class, 'index'])->middleware(['auth', 'role:alumno'])->name('alumnos.index');
+Route::get('/profesores', [ProfessorController::class, 'index'])->middleware(['auth', 'role:profesor|administrador'])->name('profesores.index');
+Route::get('/alumnos', [StudentController::class, 'index'])->middleware(['auth', 'role:alumno|administrador'])->name('alumnos.index');
 
 //Posts
 Route::middleware(['auth', 'role:administrador'])->group(function () {
@@ -59,13 +57,13 @@ Route::middleware(['auth', 'role:administrador'])->group(function () {
     Route::put('/posts/delete/{id}',[PostController::class, 'destroy'])->name('posts.delete');
 });
 
-// Noticias Internas
+// Internal News
 Route::controller(UserPostController::class)->group(function () {
    Route::get('/noticias', 'index')->name('noticiasinternas.index');
    Route::get('/noticias/{post}', 'show');
 });
 
-// Noticias Externas
+// External News
 Route::controller(UserPostController::class)->group(function () {
     Route::get('/noticias', 'index')->name('noticiasexternas.index');
     Route::get('/noticias/{post}', 'show');
@@ -74,25 +72,12 @@ Route::controller(UserPostController::class)->group(function () {
 //Roles
 Route::get('/users/roles', [RoleController::class, 'index'])->name('roles.index');
 Route::post('/users/roles', [RoleController::class, 'store'])->name('roles.store');
-Route::get('/users/{userId}/delete/{roleId}', [RoleController::class, 'destroy'])->name('roles.delete');
+Route::get('/users/{userId}/delete/{role}', [RoleController::class, 'destroy'])->name('roles.delete');
 
-//Materias
-Route::middleware('auth')->group(function () {
-    Route::get('/subjects', [SubjectController::class, 'index'])->name('subjects.index');
-    Route::get('/subjects/edit/{subject}', [SubjectController::class, 'edit'])->name('subjects.edit');
-    Route::get('/subjects/create', [SubjectController::class, 'create'])->name('subjects.create');
-    Route::get('/subjects/show', [SubjectController::class, 'show'])->name('subjects.show');
-    Route::post('/subjects/create', [SubjectController::class, 'store'])->name('subjects.store');
-    Route::patch('/subjects', [SubjectController::class, 'update'])->name('subjects.update');
-    Route::put('/subjects/delete/{id}',[SubjectController::class, 'destroy'])->name('subjects.delete');
-});
+// Contact
 Route::post('/contact_us', [App\Http\Controllers\ContactController::class, 'contact_us'])->name("contact_us");
 // Route::get('/contact', function () {return view('welcome');})->name("contact");
   Route::get('/contact', [App\Http\Controllers\ContactController::class,'contact'])->name('contact');
-
-//Images
-//Route::post('/posts/update', [ImageController::class, 'update'])->name('posts.update');
-
 
 require __DIR__.'/auth.php';
 

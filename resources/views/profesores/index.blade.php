@@ -25,14 +25,13 @@
                                 <th class=" d-none d-xl-table-cell" scope="col ">Id</th>
                                 <th scope="col">Nombre</th>
                                 <th class=" d-none d-xl-table-cell" scope="col">Email</th>
-                                 <th class=" d-none d-xl-table-cell" scope="col">Rol</th>
                                 <th style="text-align: end" scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($users as $user)
-                                {{$userRoles = $user->roles->pluck('role_name')}}
-                                {{dd($userRoles)}}
+                               {{-- {{$userRoles = $user->roles->pluck('role_name')}}
+                                {{dd($userRoles)}}--}}
                             <tr>
                                 <th class=" d-none d-xl-table-cell text-center   " scope="row">{{$user->id}}</th>
                                 <td>{{$user->name}}</td>
@@ -41,7 +40,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {!! $users->links() !!}
+
                 </div>
             </div>
         </div>

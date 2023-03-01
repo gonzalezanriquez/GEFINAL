@@ -2,29 +2,25 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Image;
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Redirect;
-use function PHPUnit\Framework\isEmpty;
-use function PHPUnit\Framework\throwException;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
     public function index(Request $request)
     {
 
+
+
         $user = User::find($request->id);
-        $roles = Role::all();
-        $userRoles = $user->roles()->get();
+        $allroles = Role::all()->pluck('name');
+        $roles = $user->getRoleNames();
 
         return view('roles.index', [
             'user' => $user,
             'roles' => $roles,
-            'userRoles' => $userRoles
+            'allroles' => $allroles
         ]);
 
     }
@@ -33,27 +29,15 @@ class RoleController extends Controller
     {
 
         $user = User::find($request->userId);
-        $roles = $user->roles()->get();
-        $checkRole = $roles->where('id', $request->roles);
+        $user->assignRole($request->roles);
 
-        if ($checkRole->isNotEmpty() === true)
-        {
-
-            return back()->withErrors(['msg' => 'Éste usuario ya posee el rol seleccionado!']);
-        }
-        else
-        {
-            $user->roles()->attach($request->roles);
             return back();
-        }
-
-
     }
 
     public function destroy(Request $request)
     {
         $user = User::find($request->userId);
-        $user->roles()->detach($request->roleId);
+        $user->removeRole($request->role);
 
         return back();
     }

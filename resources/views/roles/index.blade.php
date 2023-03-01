@@ -18,8 +18,8 @@
                                 <div class="col-md-12 text-center">
                                     <select class="form-select " name="roles" id="roles">
 
-                                        @foreach($roles as $role)
-                                            <option value="{{$role->id}}">{{$role->role_name}}</option>
+                                        @foreach($allroles as $role)
+                                            <option value="{{$role}}">{{$role}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -39,19 +39,17 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th scope="col">Id</th>
                                 <th scope="col">Rol</th>
                                 <th style="text-align: end" scope="col">Acciones</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                                @foreach($userRoles as $userRole)
+                                @foreach($roles as $role)
                                     <tr>
-                                        <th scope="row">{{$userRole->id}}</th>
-                                        <td>{{$userRole->role_name}}</td>
+                                        <td>{{$role}}</td>
                                         <td style="text-align: end">
-                                            <a class="btn btn-danger" href="{{route('roles.delete', ['userId'=>$user->id, 'roleId'=>$userRole->id])}}">Eliminar</a>
+                                            <a class="btn btn-danger" href="{{route('roles.delete', ['userId' => $user->id, 'role' => $role])}}">Eliminar</a>
                                         </td>
                                     </tr>
                                 @endforeach

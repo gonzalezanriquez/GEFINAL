@@ -7,8 +7,14 @@
 @section('content')
 
     <div class="container centrado mt-5">
-        <form method="post" action=@if(isset($post)) {{route('posts.update',$post)}} @else {{ route('posts.store') }} @endif>
-            @csrf
+        @if(isset($post))
+            <form class="mx-1 mx-md-4" method="POST" action=" {{ route('posts.update', $post->id)}}">
+                @csrf
+                @method('PATCH')
+                @else
+                    <form class="mx-1 mx-md-4" method="POST" action=" {{ route('posts.store') }}">
+                        @csrf
+                        @endif
             <div class="mb-3 ">
                 <label for="title" class="form-label">Titulo </label>
                 <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
