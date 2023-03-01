@@ -42,9 +42,13 @@ Route::middleware(['auth', 'role:administrador'])->group(function () {
     Route::put('/users/delete/{id}',[UserController::class, 'destroy'])->name('users.delete');
 });
 
-//Professors n' Students
+//Professors
 Route::get('/profesores', [ProfessorController::class, 'index'])->middleware(['auth', 'role:profesor|administrador'])->name('profesores.index');
-Route::get('/alumnos', [StudentController::class, 'index'])->middleware(['auth', 'role:alumno|administrador'])->name('alumnos.index');
+Route::get('/profesores/{id}', [ProfessorController::class, 'show'])->middleware(['auth', 'role:profesor|administrador'])->name('profesores.show');
+
+// Students
+Route::get('/alumnos', [StudentController::class, 'index'])->middleware(['auth', 'role:alumno|profesor|administrador'])->name('alumnos.index');
+Route::get('/alumnos{id}', [StudentController::class, 'show'])->middleware(['auth', 'role:alumno|profesor|administrador'])->name('alumnos.show');
 
 //Posts
 Route::middleware(['auth', 'role:administrador'])->group(function () {

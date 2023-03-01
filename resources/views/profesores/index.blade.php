@@ -30,12 +30,15 @@
                         </thead>
                         <tbody>
                             @foreach($users as $user)
-                               {{-- {{$userRoles = $user->roles->pluck('role_name')}}
-                                {{dd($userRoles)}}--}}
                             <tr>
                                 <th class=" d-none d-xl-table-cell text-center   " scope="row">{{$user->id}}</th>
                                 <td>{{$user->name}}</td>
                                 <td class=" d-none d-xl-table-cell">{{$user->email}}</td>
+                                <td class="text-end">
+                                    <!-- MOSTRAR PERFIL -->
+                                    <a class="btn btn-warning btn-sm mb-1" href="{{route('profesores.show')}}">
+                                        <i class=" bi bi-person-vcard "></i></a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
