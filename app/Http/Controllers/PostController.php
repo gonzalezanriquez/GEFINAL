@@ -112,9 +112,4 @@ class PostController extends Controller
         return redirect('/posts')->with('success','La noticia ha sido borrada exitosamente');;
     }
 
-
-
-
-
-
 }
