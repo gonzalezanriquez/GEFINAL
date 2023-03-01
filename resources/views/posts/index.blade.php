@@ -55,9 +55,9 @@
                                     <a class="btn btn-warning btn-sm mb-1" href="{{--{{route('posts.index', ['id'=>$post->id])}}--}}">
                                         <i class=" bi bi-person-vcard "></i></a>
                                     <!-- DELETE -->
-                                    <form method="POST" action="{{--{{route('posts.delete', ['id'=> $post->id])}}--}}">
+                                    <form method="POST" action="{{route('posts.delete', ['id'=> $post->id])}}">
                                         @csrf
-                                        @method('put')
+                                        @method('PUT')
                                         <button class="btn btn-danger btn-sm mb-1">
                                             <i class=" bi bi-trash "></i></button>
                                     </form>

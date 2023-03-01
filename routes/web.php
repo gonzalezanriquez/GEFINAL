@@ -55,17 +55,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/show', [PostController::class, 'show'])->name('posts.show');
     Route::post('/posts/create', [PostController::class, 'store'])->name('posts.store');
     Route::patch('/posts', [PostController::class, 'update'])->name('posts.update');
-    Route::put('/posts/delete/{id}',[PostController::class, 'destroy'])->name('posts.destroy');
+    Route::put('/posts/delete/{id}',[PostController::class, 'destroy'])->name('posts.delete');
 });
 
 // Noticias Internas
-Route::controller(PostController::class)->group(function () {
+Route::controller(UserPostController::class)->group(function () {
    Route::get('/noticias', 'index')->name('noticiasinternas.index');
    Route::get('/noticias/{post}', 'show');
 });
 
 // Noticias Externas
-Route::controller(PostController::class)->group(function () {
+Route::controller(UserPostController::class)->group(function () {
     Route::get('/noticias', 'index')->name('noticiasexternas.index');
     Route::get('/noticias/{post}', 'show');
 });
