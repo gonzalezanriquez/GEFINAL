@@ -13,13 +13,13 @@
                         <i class="iconoSide bi bi-columns-gap pe-2 fa-lg"></i> Dashboard</a>
                 </li>
 
-                <li class="{{ Request::is('posts*') ? 'active' : '' }}">
+                <li class="{{ Request::is('noticiasexternas*') ? 'active' : '' }}">
                     <a href="{{ route('noticiasexternas.index', ['mode' => $mode = 'Externas']) }}" class="nav-link " aria-current="page">
-                        <i class="bi bi-envelope pe-2"></i> Noticias Externas</a>
+                        <i class="bi bi-envelope-open pe-2"></i> Noticias Externas</a>
 
                 @hasanyrole('administrador|profesor|alumno')
 
-                <li class="{{ Request::is('posts*') ? 'active' : '' }}">
+                <li class="{{ Request::is('noticiasexternas*') ? 'active' : '' }}">
                     <a href="{{ route('noticiasexternas.index', ['mode' => $mode = 'Internas']) }}" class="nav-link " aria-current="page">
                         <i class="bi bi-envelope pe-2"></i> Noticias Internas</a>
                 </li>
@@ -28,7 +28,7 @@
 
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
                     <a href="{{ route('posts.index') }}" class="nav-link " aria-current="page">
-                        <i class="bi bi-envelope pe-2"></i> Posteos</a>
+                        <i class="bi bi-bookmark-plus pe-2"></i> Posteos</a>
                 </li>
                 @endhasanyrole
                 @hasrole('administrador')

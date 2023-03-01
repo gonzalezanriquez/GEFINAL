@@ -28,11 +28,14 @@ class HomeController extends Controller
     public function index()
     {
         $activePosts=Post::count();
+        $profesores=User::role('profesor')->get()->count();
+        $alumnos=User::role('alumno')->get()->count();
 
-
-
+        
         return view('home', [
-            'activePosts' => $activePosts
+            'activePosts' => $activePosts,
+            'profesores' => $profesores,
+            'alumnos' => $alumnos,
         ]);
     }
 }
