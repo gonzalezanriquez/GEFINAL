@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('slug')->unique();
+            $table->text('excerpt');
             $table->text('body');
             $table->softDeletes();
             $table->integer('updated_by')->nullable();

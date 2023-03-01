@@ -1,90 +1,82 @@
 @extends('layouts.sidebar')
+
 @section('content')
+    <div class="row justify-content-center animate__animated animate__zoomIn">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <div class=" text-center my-2">
+                        <img  class="" src="{{asset('/img/crearUsuario.png')}}" alt="Lista Usuarios" height="">
+                        <h1>Lista de Noticias</h1>
+                        <a class="btn btn-dark  mb-3" href="{{route('users.create')}}">
+                            <i class="bi bi-person-add"></i>
+                            Crear Nueva Noticia
+                        </a>
+                    </div>
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
 
-<div class="container mt-5">
-<table class="table">
-    <thead>
-        <a href="{{route('posts.create')}}"class='btn btn-warning'> <i class="bi bi-person-add"></i></a>
+                    <!-- TABLA -->
+                    <table id="table" class="table">
+                        <thead>
+                        <tr class="text-center   ">
+                            <th class=" d-none d-xl-table-cell" scope="col ">Id</th>
+                            <th scope="col">Titulo</th>
+                            <th class=" d-none d-xl-table-cell" scope="col">Contenido</th>
+                            <th class=" d-none d-xl-table-cell" scope="col">Visibilidad</th>
+                            <th style="text-align: end" scope="col">Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Noticia</th>
-        <th scope="col d-sm-none d-md-table-cell">ffdgdf</th>
-        <th scope="col">Estado</th>
-        <th scope="col">edicion</th>
-
-      </tr>
-    </thead>
-    <tbody>
-        @foreach ($posts as $post)
-        <tr>
-        <th scope="row" class="text-center d-none d-xl-table-cell"> {{$post->id}}</th>
-        <td  class="text-center">{{$post->titulo}}</td>
-        <td class="d-none d-xl-table-cell">{{$post->contenido}}</td>
-
-        <td class="w-20 text-center "><span class="badge text-bg-info "> {{$post->isVisible}}</span></td>
-
-        <td  class=" w-50">
-            <a href="{{route('posts.edit',$post)}}"class='btn btn-warning'> <i class="bi bi-pen"></i></a>
-            <form class= "d-inline" action="{{--{{route('posts.destroy',$post)}}--}}" method="post">
-                @csrf
-                @method('DELETE')
-
-                <button class="btn btn-danger" type="submit"> <i class="bi bi-trash3-fill"></i>
-                </i></button>
-            </form>
-
-        </td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
-</div>
-{{--
-
-<div class="container mt-5">
-    <table class="table">
-        <thead>
-            <h2>Borrados</h2>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Noticia</th>
-            <th scope="col d-none d-xl-table-cell ">Contenido</th>
-            <th scope="col">edicion</th>
-          </tr>
-        </thead>
-        <tbody>
-            @foreach ($postsNot as $post)
-            <tr class="text-muted">
-            <th scope="row"  class="text-center">{{$post->id}}</th>
-            <td  class="text-center">{{$post->titulo}}</td>
-            <td class="w-25 d-none d-xl-table-cell">{{$post->contenido}}</td>
-
-            <td  class="w-50 text-center g-5">
-                <a href="{{route('posts.edit',$post)}}"class='btn btn-warning'> <i class="bi bi-pen"></i></a>
-
-                <form action="{{route('posts.destroy',$post)}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" type="submit"> <i class="bi bi-trash3-fill"></i>
-                    </i></button>
+                        @foreach($posts as $post)
+                            <tr>
+                                <th class=" d-none d-xl-table-cell text-center d-flex align-item-center" scope="row">{{$post->id}}</th>
+                                <td>{{$post->title}}</td>
+                                <td class=" d-none d-xl-table-cell">{{$post->excerpt}}</td>
+                                <td class=" d-none d-xl-table-cell text-center">
+                                  {{--  @if(!$post->roles->isEmpty())
+                                        <span class="badge bg-info"> {{$post->roles->pluck('role_name')}} </span>
+                                    @else--}}
+                                        <span class="badge bg-danger">Sin Asignar</span>
+                                    {{--@endif--}}
+                                </td>
 
 
-                </form>
 
-            </td>
-          </tr>
-          @endforeach --}}
-        </tbody>
-        {!!$posts->links()!!}
-      </table>
+                                <td class="text-end">
+                                    <!-- EDITAR -->
+                                    <a class="btn btn-success btn-sm mb-1" href="{{--{{route('posts.edit', ['id'=>$post->id])}}--}}">
+                                        <i class=" bi bi-pencil "></i></a>
+                                    <!-- ASIGNAR ROLES -->
+                                    <a class="btn btn-warning btn-sm mb-1" href="{{--{{route('posts.index', ['id'=>$post->id])}}--}}">
+                                        <i class=" bi bi-person-vcard "></i></a>
+                                    <!-- DELETE -->
+                                    <form method="POST" action="{{--{{route('posts.delete', ['id'=> $post->id])}}--}}">
+                                        @csrf
+                                        @method('put')
+                                        <button class="btn btn-danger btn-sm mb-1">
+                                            <i class=" bi bi-trash "></i></button>
+                                    </form>
+
+
+
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    {{--{!! $post->links() !!}--}}
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#table').DataTable();
-        } );
-    </script>
+
+
+
 
 @endsection

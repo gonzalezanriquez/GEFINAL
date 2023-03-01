@@ -16,15 +16,10 @@ class PostController extends Controller
 {
     public function index()
     {
-
-
-            return view('posts.noticias', [
+            return view('posts.index', [
                 'posts' => Post::paginate(5),
-                'images' => Image::all(),
+                /*'images' => Image::all(),*/
             ]);
-
-
-
 
     }
 

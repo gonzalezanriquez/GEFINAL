@@ -14,18 +14,15 @@
                 </li>
 
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
-                    <a href="{{ url('/posts') }}" class="nav-link " aria-current="page">
+                    <a href="{{--{{ route('noticias.index') }}--}}" class="nav-link " aria-current="page">
                         <i class="bi bi-envelope pe-2"></i> Noticias Internass</a>
                 </li>
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
-                    <a href="{{ url('/posts') }}" class="nav-link " aria-current="page">
+                    <a href="{{--{{ route('noticias.index') }}--}}" class="nav-link " aria-current="page">
                         <i class="bi bi-envelope pe-2"></i> Noticias Externas</a>
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
-                    <a href="{{ url('/posts') }}" class="nav-link " aria-current="page">
-                        <i class="bi bi-envelope pe-2"></i> Posteos Internos</a>
-                <li class="{{ Request::is('posts*') ? 'active' : '' }}">
-                    <a href="{{ url('/posts') }}" class="nav-link " aria-current="page">
-                        <i class="bi bi-envelope pe-2"></i> Posteos Externos</a>
+                    <a href="{{ route('posts.index') }}" class="nav-link " aria-current="page">
+                        <i class="bi bi-envelope pe-2"></i> Posteos</a>
                 </li>
                 <li class="{{ Request::is('users*') ? 'active' : '' }}">
                     <a href="{{ url('/users') }}" class="nav-link " aria-current="page">
