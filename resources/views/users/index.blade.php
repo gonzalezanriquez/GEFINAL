@@ -52,16 +52,16 @@
                                 
                                 <td class="d-flex justify-content-end">
                                     <!-- EDITAR -->
-                                    <a class="btn btn-success btn-sm mb-1" href="{{route('users.edit', ['id'=>$post->id])}}">
+                                    <a class="btn btn-success  me-2" href="{{route('users.edit', ['id'=>$user->id])}}">
                                         <i class=" bi bi-pencil "></i></a>
                                     <!-- ASIGNAR ROLES -->
-                                    <a class="btn btn-warning btn-sm mb-1" href="{{route('roles.index', ['id'=>$user->id])}}">>
+                                    <a class="btn btn-warning  me-2" href="{{route('roles.index', ['id'=>$user->id])}}">
                                         <i class=" bi bi-person-vcard "></i></a>
                                     <!-- DELETE -->
                                     <form method="POST" action="{{route('posts.delete', ['id'=> $user->id])}}">
                                         @csrf
                                         @method('PUT')
-                                        <button class="btn btn-danger btn-sm mb-1">
+                                        <button class="btn btn-danger ">
                                             <i class=" bi bi-trash "></i></button>
                                     </form>
 
