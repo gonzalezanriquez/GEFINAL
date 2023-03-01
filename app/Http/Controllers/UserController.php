@@ -27,30 +27,12 @@ class UserController extends Controller
         }
     }
 
-
-
-
-
     public function index()
     {
-
-        $user = auth()->user();
-        $authotizedRoles = $user->roles;
-
-        if ($authotizedRoles->doesntContain('role_name', 'Administrador') === true) {
-            return view('notAuthorized');
-        } else if($authotizedRoles->Contains('role_name', 'Profesor') === true) {
-            return view('profesores.index', [
-                'profesores' => Role::where('role_name')
-            ]);
-        }
-        else
-        {
             return view('users.index', [
                 'users' => User::paginate(10),
                 'roles' => Role::all(),
             ]);
-        }
     }
 
     public function edit(Request $request)

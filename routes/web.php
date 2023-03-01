@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/show', [PostController::class, 'show'])->name('posts.show');
     Route::post('/posts/create', [PostController::class, 'store'])->name('posts.store');
     Route::patch('/posts', [PostController::class, 'update'])->name('posts.update');
-    Route::post('/posts/delete/{id}',[PostController::class, 'destroy'])->name('posts.destroy');
+    Route::put('/posts/delete/{id}',[PostController::class, 'destroy'])->name('posts.destroy');
 });
 
 // User Posts
