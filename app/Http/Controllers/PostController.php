@@ -31,7 +31,7 @@ class PostController extends Controller
     public function create()
     {
 
-           return view('posts.create');
+           return view('posts.createOrEdit');
 
 }
     public function store(Request $request)
@@ -69,7 +69,7 @@ class PostController extends Controller
 
         $post = Post::findOrFail($id);
 
-           return view('posts.create', [
+           return view('posts.createOrEdit', [
                 'post' => $post
           ]);
       }
