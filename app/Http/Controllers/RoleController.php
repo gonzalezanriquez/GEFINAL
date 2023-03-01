@@ -31,7 +31,7 @@ class RoleController extends Controller
         $user = User::find($request->userId);
         $user->assignRole($request->roles);
 
-            return back();
+            return back()->with('message','El rol se ha asignado exitosamente');
     }
 
     public function destroy(Request $request)

@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
-    <div class="row justify-content-center animate__animated animate__zoomIn">
+    <div class="row justify-content-center ">
         <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
@@ -14,9 +14,10 @@
                         </a>
                     </div>
                     @if(session()->has('message'))
-                        <div class="alert alert-success">
-                            {{ session()->get('message') }}
-                        </div>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session()->get('message') }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
                     @endif
 
                     <!-- TABLA -->
@@ -38,26 +39,28 @@
                                 <td>{{$user->name}}</td>
                                 <td class=" d-none d-xl-table-cell">{{$user->email}}</td>
                                 <td class=" d-none d-xl-table-cell text-center">
-                                  {{--  @if(!$user->roles->isEmpty())
-                                    <span class="badge bg-info"> {{$user->roles->pluck('role_name')}} </span>
+
+ @if(!empty($user))
+                                    <span class="badge bg-secondary">  {{ $user->getRoleNames() }}   </span>
                                     @else
                                     <span class="badge bg-danger">Sin Asignar</span>
-                                    @endif--}}
+                                    @endif
+                                  
                                 </td>
 
 
-
-                                <td class="text-end">
+                                
+                                <td class="d-flex justify-content-end">
                                     <!-- EDITAR -->
-                                    <a class="btn btn-success btn-sm mb-1" href="{{route('users.edit', ['id'=>$user->id])}}">
+                                    <a class="btn btn-success btn-sm mb-1" href="{{route('users.edit', ['id'=>$post->id])}}">
                                         <i class=" bi bi-pencil "></i></a>
                                     <!-- ASIGNAR ROLES -->
-                                    <a class="btn btn-warning btn-sm mb-1" href="{{route('roles.index', ['id'=>$user->id])}}">
+                                    <a class="btn btn-warning btn-sm mb-1" href="{{route('roles.index', ['id'=>$user->id])}}">>
                                         <i class=" bi bi-person-vcard "></i></a>
                                     <!-- DELETE -->
-                                    <form method="POST" action="{{route('users.delete', ['id'=> $user->id])}}">
+                                    <form method="POST" action="{{route('posts.delete', ['id'=> $user->id])}}">
                                         @csrf
-                                        @method('put')
+                                        @method('PUT')
                                         <button class="btn btn-danger btn-sm mb-1">
                                             <i class=" bi bi-trash "></i></button>
                                     </form>
@@ -65,6 +68,8 @@
 
 
                                 </td>
+                               
+                              
                             </tr>
                             @endforeach
                         </tbody>

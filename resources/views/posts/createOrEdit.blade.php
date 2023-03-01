@@ -6,7 +6,7 @@
 @endif
 @section('content')
 
-    <div class="container centrado mt-5">
+    <div class="row container  mt-5">
         @if(isset($post))
             <form class="mx-1 mx-md-4" method="POST" action=" {{ route('posts.update', $post->id)}}">
                 @csrf
@@ -19,11 +19,14 @@
                 <label for="title" class="form-label">Titulo </label>
                 <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     value="{{ old('title') ?? isset($post) ? $post->title : '' }}">
-                <div id="emailHelp" class="form-text">Lorem ipsu loremp ipsu</div>
+            
             </div>
-            <div class="mb-3">
+
+          
+            <div class="mb-3 ">
                 <label for="body" class="form-label">Contenido</label>
-                <textarea name="body" id="exampleInputEmail2" cols="60" rows="10">{{ old('body') ?? isset($post) ? $post->body : ''  }}</textarea>
+                <textarea name="body" id="exampleInputEmail2" cols="60" rows="10">
+                    {{ old('body') ?? isset($post) ? $post->body : ''  }}</textarea>
 
             </div>
             <div class="mb-3">

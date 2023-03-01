@@ -1,6 +1,6 @@
 @extends('layouts.sidebar')
 @section('content')
-    <div class="container  px-4 py-5 my-5 animate__animated animate__zoomIn">
+    <div class="container  px-4 py-5 my-5 ">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -9,6 +9,13 @@
 
                         <h1 class="text-center">Asignacion de Roles</h1>
                         <p  class="h6 text-center ">(para usuario: {{$user->name}})</p>
+                       
+                        @if(session()->has('message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session()->get('message') }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+                    @endif
 
                         <form id="postRol" method="POST" action="{{route('roles.store')}}">
                             @csrf
