@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('excerpt');
             $table->text('body');
+            $table->integer('external')->default(0);
+            $table->integer('internal')->default(0);
             $table->softDeletes();
             $table->integer('updated_by')->nullable();
             $table->timestamp('published_at')->nullable();

@@ -37,7 +37,7 @@
                                     <div class="card-block">
                                         <h5 class="">NOTICIAS</h5>
                                         <h2 class="text-right"><i
-                                                class="bi bi-chat-right-text pe-3"></i><span>325</span>
+                                                class="bi bi-chat-right-text pe-3"></i><span>{{$activePosts}}</span>
                                         </h2>
                                         <!-- {{-- <h2 class="text-right"><i class="fa fa-newspaper-o f-left"></i><span>{{$activePosts}}</span></h2> --}} -->
                                     </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LevelsController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
@@ -8,6 +9,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserPostController;
+use App\Http\Controllers\UserRoleController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,15 +29,13 @@ use Illuminate\Support\Facades\Route;
 Route::view('/architecture', 'architecture')->name('arc');
 
 //Welcome
-Route::view('/','welcome')
-    // ->middleware('guest')
-    ;
+Route::view('/','welcome');
 
 //Home
-Route::view('/home','home')->middleware(['auth', 'verified']);
+Route::get('/home',[HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
 // Users
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:administrador'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/users/create', [UserController::class, 'store'])->name('users.store');
@@ -44,11 +45,11 @@ Route::middleware('auth')->group(function () {
 });
 
 //Professors n' Students
-Route::get('/profesores', [UserController::class, 'index'])->name('profesores.index');
-Route::get('/alumnos', [UserController::class, 'index'])->name('alumnos.index');
+Route::get('/profesores', [UserController::class, 'index'])->middleware(['auth', 'role:profesor'])->name('profesores.index');
+Route::get('/alumnos', [UserController::class, 'index'])->middleware(['auth', 'role:alumno'])->name('alumnos.index');
 
 //Posts
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:administrador'])->group(function () {
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
     Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->name('posts.edit');
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
@@ -74,18 +75,6 @@ Route::controller(UserPostController::class)->group(function () {
 Route::get('/users/roles', [RoleController::class, 'index'])->name('roles.index');
 Route::post('/users/roles', [RoleController::class, 'store'])->name('roles.store');
 Route::get('/users/{userId}/delete/{roleId}', [RoleController::class, 'destroy'])->name('roles.delete');
-
-//Niveles / Años
-Route::middleware('auth')->group(function () {
-    Route::get('/classrooms', [LevelsController::class, 'index'])->name('classrooms.index');
-    Route::get('/classrooms/edit/{post}', [LevelsController::class, 'edit'])->name('classrooms.edit');
-    Route::get('/classrooms/create', [LevelsController::class, 'create'])->name('classrooms.create');
-    Route::get('/classrooms/show', [LevelsController::class, 'show'])->name('classrooms.show');
-    Route::post('/classrooms/create', [LevelsController::class, 'store'])->name('classrooms.store');
-    Route::patch('/classrooms', [LevelsController::class, 'update'])->name('classrooms.update');
-    Route::put('/classrooms/delete/{id}',[LevelsController::class, 'destroy'])->name('classrooms.delete');
-});
-
 
 //Materias
 Route::middleware('auth')->group(function () {

@@ -38,11 +38,11 @@
                                 <td>{{$user->name}}</td>
                                 <td class=" d-none d-xl-table-cell">{{$user->email}}</td>
                                 <td class=" d-none d-xl-table-cell text-center">
-                                    @if(!$user->roles->isEmpty())
+                                  {{--  @if(!$user->roles->isEmpty())
                                     <span class="badge bg-info"> {{$user->roles->pluck('role_name')}} </span>
                                     @else
                                     <span class="badge bg-danger">Sin Asignar</span>
-                                    @endif
+                                    @endif--}}
                                 </td>
 
 

@@ -1,13 +1,14 @@
 @extends('layouts.sidebar')
 
 @section('content')
+
     <div class="row justify-content-center animate__animated animate__zoomIn">
         <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
                     <div class=" text-center my-2">
                         <img  class="" src="{{asset('/img/crearUsuario.png')}}" alt="Lista Usuarios" height="">
-                        <h1>Lista de Noticias</h1>
+                        <h1>Lista de Noticias </h1>
                         <a class="btn btn-dark  mb-3" href="{{route('posts.create')}}">
                             <i class="bi bi-person-add"></i>
                             Crear Nueva Noticia

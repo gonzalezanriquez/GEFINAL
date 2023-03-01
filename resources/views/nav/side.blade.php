@@ -9,16 +9,17 @@
             <ul class="list-unstyled components mb-5">
 
                 <li class="{{ Request::is('home*') ? 'active' : '' }}">
-                    <a href="{{ url('/home') }}" class="nav-link " aria-current="page">
+                    <a href="{{ route('home') }}" class="nav-link " aria-current="page">
                         <i class="iconoSide bi bi-columns-gap pe-2 fa-lg"></i> Dashboard</a>
                 </li>
 
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
-                    <a href="{{ route('noticiasexternas.index', 'Internas') }}" class="nav-link " aria-current="page">
-                        <i class="bi bi-envelope pe-2"></i> Noticias Internass</a>
+                    <a href="{{ route('noticiasexternas.index', ['mode' => $mode = 'Internas']) }}" class="nav-link " aria-current="page">
+                        <i class="bi bi-envelope pe-2"></i> Noticias Internas</a>
                 </li>
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
-                    <a href="{{ route('noticiasexternas.index', 'Externas') }}" class="nav-link " aria-current="page">
+                    <a href="{{ route('noticiasexternas.index', ['mode' => $mode = 'Externas']) }}" class="nav-link " aria-current="page">
+
                         <i class="bi bi-envelope pe-2"></i> Noticias Externas</a>
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
                     <a href="{{ route('posts.index') }}" class="nav-link " aria-current="page">

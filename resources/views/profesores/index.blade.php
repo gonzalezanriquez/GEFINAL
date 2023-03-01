@@ -31,31 +31,12 @@
                         </thead>
                         <tbody>
                             @foreach($users as $user)
+                                {{$userRoles = $user->roles->pluck('role_name')}}
+                                {{dd($userRoles)}}
                             <tr>
                                 <th class=" d-none d-xl-table-cell text-center   " scope="row">{{$user->id}}</th>
                                 <td>{{$user->name}}</td>
                                 <td class=" d-none d-xl-table-cell">{{$user->email}}</td>
-                                <td class=" d-none d-xl-table-cell">
-                                    @if(!$user->roles->isEmpty())
-                                        {{$user->roles->pluck('role_name')}}
-                                    @else
-                                    No hay roles asignados
-                                    @endif
-                                </td>
-
-
-                                <td class="text-end">
-                                    <!-- EDITAR -->
-                                    <a class="btn btn-success btn-sm mb-1" href="{{route('users.edit', ['id'=>$user->id])}}">
-                                        <i class=" bi bi-pencil "></i></a>
-                                    <!-- ASIGNAR ROLES -->
-                                    <a class="btn btn-warning btn-sm mb-1" href="{{route('roles.index', ['id'=>$user->id])}}">
-                                        <i class=" bi bi-person-vcard "></i></a>
-                                    <!-- DELETE -->
-                                    <a class="btn btn-danger btn-sm mb-1" href="{{route('users.delete', ['id'=> $user->id])}}">
-                                        <i class=" bi bi-trash "></i></a>
-
-                                </td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -6,9 +6,7 @@ use App\Models\Image;
 use App\Models\Post;
 use DateTime;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 
@@ -16,13 +14,10 @@ class PostController extends Controller
 {
     public function index()
     {
-
             return view('posts.index', [
-                'posts' => Post::paginate(5),
+                'posts' => Post::paginate(10),
                 /*'images' => Image::all(),*/
             ]);
-
-
 
     }
 

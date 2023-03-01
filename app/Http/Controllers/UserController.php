@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Role;
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,27 +11,27 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
+
 
 class UserController extends Controller
 {
     public function create(): View
     {
-        $user = auth()->user();
-        $authotizedRoles = $user->roles;
 
-        if ($authotizedRoles->doesntContain('role_name', 'Administrador') === true) {
-            return view('notAuthorized');
-        } else {
             return view('users.createOrEdit');
-        }
+
     }
 
     public function index()
     {
+
+
+
             return view('users.index', [
                 'users' => User::paginate(10),
-                'roles' => Role::all(),
             ]);
+
     }
 
     public function edit(Request $request)
