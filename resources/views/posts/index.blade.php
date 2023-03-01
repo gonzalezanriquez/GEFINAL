@@ -8,7 +8,7 @@
                     <div class=" text-center my-2">
                         <img  class="" src="{{asset('/img/crearUsuario.png')}}" alt="Lista Usuarios" height="">
                         <h1>Lista de Noticias</h1>
-                        <a class="btn btn-dark  mb-3" href="{{route('users.create')}}">
+                        <a class="btn btn-dark  mb-3" href="{{route('posts.create')}}">
                             <i class="bi bi-person-add"></i>
                             Crear Nueva Noticia
                         </a>
@@ -49,7 +49,7 @@
 
                                 <td class="text-end">
                                     <!-- EDITAR -->
-                                    <a class="btn btn-success btn-sm mb-1" href="{{--{{route('posts.edit', ['id'=>$post->id])}}--}}">
+                                    <a class="btn btn-success btn-sm mb-1" href="{{route('posts.edit', ['id'=>$post->id])}}">
                                         <i class=" bi bi-pencil "></i></a>
                                     <!-- ASIGNAR ROLES -->
                                     <a class="btn btn-warning btn-sm mb-1" href="{{--{{route('posts.index', ['id'=>$post->id])}}--}}">

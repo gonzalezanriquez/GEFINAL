@@ -14,11 +14,11 @@
                 </li>
 
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
-                    <a href="{{--{{ route('noticias.index') }}--}}" class="nav-link " aria-current="page">
+                    <a href="{{ route('noticiasexternas.index', 'Internas') }}" class="nav-link " aria-current="page">
                         <i class="bi bi-envelope pe-2"></i> Noticias Internass</a>
                 </li>
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
-                    <a href="{{--{{ route('noticias.index') }}--}}" class="nav-link " aria-current="page">
+                    <a href="{{ route('noticiasexternas.index', 'Externas') }}" class="nav-link " aria-current="page">
                         <i class="bi bi-envelope pe-2"></i> Noticias Externas</a>
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
                     <a href="{{ route('posts.index') }}" class="nav-link " aria-current="page">

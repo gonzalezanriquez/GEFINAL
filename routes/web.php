@@ -50,7 +50,7 @@ Route::get('/alumnos', [UserController::class, 'index'])->name('alumnos.index');
 //Posts
 Route::middleware('auth')->group(function () {
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-    Route::get('/posts/edit/{post}', [PostController::class, 'edit'])->name('posts.edit');
+    Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->name('posts.edit');
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::get('/posts/show', [PostController::class, 'show'])->name('posts.show');
     Route::post('/posts/create', [PostController::class, 'store'])->name('posts.store');
@@ -58,10 +58,16 @@ Route::middleware('auth')->group(function () {
     Route::put('/posts/delete/{id}',[PostController::class, 'destroy'])->name('posts.destroy');
 });
 
-// User Posts
+// Noticias Internas
 Route::controller(PostController::class)->group(function () {
-   Route::get('/noticias', 'index')->name('noticias');
-   Route::get('/usersposts/{post}', 'show');
+   Route::get('/noticias', 'index')->name('noticiasinternas.index');
+   Route::get('/noticias/{post}', 'show');
+});
+
+// Noticias Externas
+Route::controller(PostController::class)->group(function () {
+    Route::get('/noticias', 'index')->name('noticiasexternas.index');
+    Route::get('/noticias/{post}', 'show');
 });
 
 //Roles
