@@ -16,9 +16,10 @@ class ProfessorController extends Controller
     {
 
         return view('profesores.index', [
-            'users' => User::role('administrador')->get(),
+            'users' => User::role('profesor')->get(),
             'title' => 'Profesores'
         ]);
+
     }
 
     /**

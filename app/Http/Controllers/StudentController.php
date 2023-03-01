@@ -15,7 +15,7 @@ class StudentController extends Controller
     public function index()
     {
         return view('alumnos.index', [
-            'users' => User::role('profesor')->get(),
+            'users' => User::role('alumno')->get(),
             'title' => 'Alumnos'
         ]);
     }

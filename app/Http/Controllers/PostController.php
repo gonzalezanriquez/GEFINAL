@@ -59,10 +59,10 @@ class PostController extends Controller
 
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
 
-        $post = Post::findOrFail($id);
+        $post = Post::findOrFail($request->id);
 
            return view('posts.createOrEdit', [
                 'post' => $post
@@ -71,22 +71,24 @@ class PostController extends Controller
 
 
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
 
     {
-             $request->validate([
+
+
+        $post = Post::where('id',  $id)->first();
+
+             /*$request->validate([
                      'title'=>'required|max:255',
-                     'body'=>'required|max:255',
-                     'user_id' => 'required',
-                     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-             ]);
+                     'body'=>'required|max:500',
+                    'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+             ]);*/
 
-            $post = Post::find($request->id);
 
-            $post->name = $request['name'];
-            $post->username = $request['username'];
-            $post->email = $request['email'];
+            $post->title = $request['title'];
+            $post->body = $request['body'];
             $post->updated_at = (new DateTime())->format('Y-m-d H:i:s');
+
             $post->save();
 
             return redirect('/posts')->with('message','La noticia ha sido actualizada exitosamente');

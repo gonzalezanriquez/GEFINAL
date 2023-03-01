@@ -28,7 +28,7 @@
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label"> file input example</label>
-                <input class="form-control" name="image" type="file" id="image" value="{{ old('image') }}"  />
+                <input class="form-control" {{--name="image"--}} type="file" id="image" value="{{ old('image') }}"  />
             </div>
                 <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
