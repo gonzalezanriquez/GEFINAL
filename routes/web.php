@@ -63,20 +63,20 @@ Route::middleware(['auth', 'role:administrador'])->group(function () {
 
 // Internal News
 Route::controller(UserPostController::class)->group(function () {
-   Route::get('/noticias', 'index')->name('noticiasinternas.index');
+   Route::get('/noticias', 'index')->middleware(['auth', 'role:administrador'])->name('noticiasinternas.index');
    Route::get('/noticias/{post}', 'show');
 });
 
 // External News
 Route::controller(UserPostController::class)->group(function () {
-    Route::get('/noticias', 'index')->name('noticiasexternas.index');
+    Route::get('/noticias', 'index')->middleware(['auth', 'role:administrador'])->name('noticiasexternas.index');
     Route::get('/noticias/{post}', 'show');
 });
 
 //Roles
-Route::get('/users/roles', [RoleController::class, 'index'])->name('roles.index');
-Route::post('/users/roles', [RoleController::class, 'store'])->name('roles.store');
-Route::get('/users/{userId}/delete/{role}', [RoleController::class, 'destroy'])->name('roles.delete');
+Route::get('/users/roles', [RoleController::class, 'index'])->middleware(['auth', 'role:administrador'])->name('roles.index');
+Route::post('/users/roles', [RoleController::class, 'store'])->middleware(['auth', 'role:administrador'])->name('roles.store');
+Route::get('/users/{userId}/delete/{role}', [RoleController::class, 'destroy'])->middleware(['auth', 'role:administrador'])->name('roles.delete');
 
 // Contact
 Route::post('/contact_us', [App\Http\Controllers\ContactController::class, 'contact_us'])->name("contact_us");

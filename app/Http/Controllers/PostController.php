@@ -83,11 +83,11 @@ class PostController extends Controller
 
         $post = Post::where('id',  $id)->first();
 
-             /*$request->validate([
+           $request->validate([
                      'title'=>'required|max:255',
                      'body'=>'required|max:500',
-                    'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-             ]);*/
+             
+           ]);
 
 
             $post->title = $request['title'];

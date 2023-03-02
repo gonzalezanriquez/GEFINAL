@@ -107,7 +107,7 @@
         <div class="col-sm-7 col-lg-5 mx-auto">
             <div class="container ">
                 <div class="row justify-content-center shadow p-3 mb-5 bg-body rounded">
-                    <form action="{{--{{ route('contact_us') }}--}}" method="post" class="border p-5 rounded-2">
+                    <form action="{{ route('contact_us') }}" method="post" class="border p-5 rounded-2">
 
                         <div class="text-center ">
                             <img class="img-fluid " src="{{ asset('img/contactForm.png')}}" alt="">
@@ -160,11 +160,14 @@
 
                         <!-- submit -->
 
+    
+
+
                         <div class="d-grid gap-2">
                             <input type="submit" name="submit" value="Enviar" class="boton btn ">
                           </div>
 
-
+                      
                     </form>
                 </div>
             </div>
