@@ -19,16 +19,16 @@ class UserPostController extends Controller
         {
             return view('noticias.index', [
                 'posts' => Post::paginate(10),
-                'mode' => $request->mode
-                /*'images' => Image::all(),*/
+                'mode' => $request->mode,
+                //'images' => Image::all()
             ]);
         }
         else if ($request->mode === 'Internas')
         {
             return view('noticias.index', [
                 'posts' => Post::paginate(10),
-                'mode' => $request->mode
-                /*'images' => Image::all(),*/
+                'mode' => $request->mode,
+               // 'images' => Image::all()
             ]);
         }
 

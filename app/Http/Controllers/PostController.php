@@ -15,8 +15,8 @@ class PostController extends Controller
     public function index()
     {
             return view('posts.index', [
-                'posts' => Post::paginate(10),
-                /*'images' => Image::all(),*/
+                'posts' => Post::paginate(10)
+                
             ]);
 
     }
@@ -46,18 +46,18 @@ class PostController extends Controller
                   'slug' => Str::random(20),
                ]);
 
-        $imageName = time().'.'.$request->image->extension();
+       
 
         // Public Folder
-        $request->image->move(public_path('images'), $imageName);
-        /*
+       
+        
         Image::create([
             'post_id'=>$post['id'],
             'image'=>$request->image,
             'created_by'=>$post['user_id'],
 
 
-        ]);*/
+        ]);
 
         return redirect()->route('posts.index')->with('message','La noticia se ha creado exitosamente');
 

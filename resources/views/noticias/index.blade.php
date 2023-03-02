@@ -10,10 +10,11 @@
         </div>
 
         <div class="row row-cols-md-2 row-cols-md-3 g-4">
-            @foreach ($posts as $post )
+       {{-- @foreach ($images as $image )--}}
+        @foreach ($posts as $post )
                 <div class="col">
                     <div class="card">
-                        <img src="{{asset('img/gelogo.png')}}" class="card-img-top" alt="...">
+                        {{--<img src="{{$image->image}}" class="card-img-top" alt="...">--}}
                         <div class="card-body">
                             <h5 class="card-title">{{$post->title}}</h5>
                             <p class="card-text">{{$post->excerpt}}</p>
@@ -23,7 +24,9 @@
                         </div>
                     </div>
                 </div>
+           {{-- @endforeach--}}
             @endforeach
+
         </div>
 {!! $posts->links() !!}
 
