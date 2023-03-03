@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
@@ -26,8 +27,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $activePosts=Post::where('isVisible',1)->count();
+        $activePosts=Post::count();
+        $profesores=User::role('profesor')->get()->count();
+        $alumnos=User::role('alumno')->get()->count();
 
-        return view('home')->with('activePosts',$activePosts);
+        
+        return view('home', [
+            'activePosts' => $activePosts,
+            'profesores' => $profesores,
+            'alumnos' => $alumnos,
+        ]);
     }
 }

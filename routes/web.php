@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\LevelsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PostController;
-
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfessorController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserPostController;
+use App\Http\Controllers\UserRoleController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,74 +27,61 @@ use Illuminate\Support\Facades\Route;
 Route::view('/architecture', 'architecture')->name('arc');
 
 //Welcome
-Route::view('/','welcome')
-    // ->middleware('guest')
-    ;
+Route::view('/','welcome');
 
 //Home
-Route::view('/home','home')->middleware(['auth', 'verified']);
+Route::get('/home',[HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
 // Users
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:administrador'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/users/create', [UserController::class, 'store'])->name('users.store');
     Route::get('/users/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::patch('/users/update', [UserController::class, 'update'])->name('users.update');
+    Route::patch('/users/{id}', [UserController::class, 'update'])->name('users.update');
     Route::put('/users/delete/{id}',[UserController::class, 'destroy'])->name('users.delete');
 });
 
+//Professors
+Route::get('/profesores', [ProfessorController::class, 'index'])->middleware(['auth', 'role:profesor|administrador'])->name('profesores.index');
+Route::get('/profesores/{id}', [ProfessorController::class, 'show'])->middleware(['auth', 'role:profesor|administrador'])->name('profesores.show');
+
+// Students
+Route::get('/alumnos', [StudentController::class, 'index'])->middleware(['auth', 'role:alumno|profesor|administrador'])->name('alumnos.index');
+Route::get('/alumnos{id}', [StudentController::class, 'show'])->middleware(['auth', 'role:alumno|profesor|administrador'])->name('alumnos.show');
+
 //Posts
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:administrador'])->group(function () {
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-    Route::get('/posts/edit/{post}', [PostController::class, 'edit'])->name('posts.edit');
+    Route::get('/posts/edit', [PostController::class, 'edit'])->name('posts.edit');
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::get('/posts/show', [PostController::class, 'show'])->name('posts.show');
     Route::post('/posts/create', [PostController::class, 'store'])->name('posts.store');
-    Route::patch('/posts', [PostController::class, 'update'])->name('posts.update');
-    Route::post('/posts/delete/{id}',[PostController::class, 'destroy'])->name('posts.destroy');
+    Route::patch('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+    Route::put('/posts/delete/{id}',[PostController::class, 'destroy'])->name('posts.delete');
 });
 
-// User Posts
+// Internal News
 Route::controller(UserPostController::class)->group(function () {
-   Route::get('/usersposts', 'index')->name('usersposts.index');
-   Route::get('/usersposts/{post}', 'show');
+   Route::get('/noticias', 'index')->middleware(['auth', 'role:administrador'])->name('noticiasinternas.index');
+   Route::get('/noticias/{post}', 'show');
+});
+
+// External News
+Route::controller(UserPostController::class)->group(function () {
+    Route::get('/noticias', 'index')->middleware(['auth', 'role:administrador'])->name('noticiasexternas.index');
+    Route::get('/noticias/{post}', 'show');
 });
 
 //Roles
-Route::get('/users/roles', [RoleController::class, 'index'])->name('roles.index');
-Route::post('/users/roles', [RoleController::class, 'store'])->name('roles.store');
-Route::get('/users/{userId}/delete/{roleId}', [RoleController::class, 'destroy'])->name('roles.delete');
+Route::get('/users/roles', [RoleController::class, 'index'])->middleware(['auth', 'role:administrador'])->name('roles.index');
+Route::post('/users/roles', [RoleController::class, 'store'])->middleware(['auth', 'role:administrador'])->name('roles.store');
+Route::get('/users/{userId}/delete/{role}', [RoleController::class, 'destroy'])->middleware(['auth', 'role:administrador'])->name('roles.delete');
 
-//Niveles / Años
-Route::middleware('auth')->group(function () {
-    Route::get('/classrooms', [LevelsController::class, 'index'])->name('classrooms.index');
-    Route::get('/classrooms/edit/{post}', [LevelsController::class, 'edit'])->name('classrooms.edit');
-    Route::get('/classrooms/create', [LevelsController::class, 'create'])->name('classrooms.create');
-    Route::get('/classrooms/show', [LevelsController::class, 'show'])->name('classrooms.show');
-    Route::post('/classrooms/create', [LevelsController::class, 'store'])->name('classrooms.store');
-    Route::patch('/classrooms', [LevelsController::class, 'update'])->name('classrooms.update');
-    Route::put('/classrooms/delete/{id}',[LevelsController::class, 'destroy'])->name('classrooms.delete');
-});
-
-
-//Materias
-Route::middleware('auth')->group(function () {
-    Route::get('/subjects', [SubjectController::class, 'index'])->name('subjects.index');
-    Route::get('/subjects/edit/{subject}', [SubjectController::class, 'edit'])->name('subjects.edit');
-    Route::get('/subjects/create', [SubjectController::class, 'create'])->name('subjects.create');
-    Route::get('/subjects/show', [SubjectController::class, 'show'])->name('subjects.show');
-    Route::post('/subjects/create', [SubjectController::class, 'store'])->name('subjects.store');
-    Route::patch('/subjects', [SubjectController::class, 'update'])->name('subjects.update');
-    Route::put('/subjects/delete/{id}',[SubjectController::class, 'destroy'])->name('subjects.delete');
-});
+// Contact
 Route::post('/contact_us', [App\Http\Controllers\ContactController::class, 'contact_us'])->name("contact_us");
 // Route::get('/contact', function () {return view('welcome');})->name("contact");
   Route::get('/contact', [App\Http\Controllers\ContactController::class,'contact'])->name('contact');
-
-//Images
-//Route::post('/posts/update', [ImageController::class, 'update'])->name('posts.update');
-
 
 require __DIR__.'/auth.php';
 

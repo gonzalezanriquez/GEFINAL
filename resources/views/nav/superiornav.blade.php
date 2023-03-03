@@ -10,22 +10,10 @@
             <!-- Left Side Of Navbar -->
             @auth
             <ul class="navbar-nav me-auto">
-                <li class="nav-item dropdown px-3">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle px-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <li class="nav-item px-3">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle px-2" href="{{route('noticiasexternas.index')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ __('Noticias') }}
                     </a>
-
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('posts.create')}}">
-                            {{ __('Crear Noticia') }}
-                        </a>
-                        <a class="dropdown-item" href="{{route('posts.index')}}">
-                            {{ __('Editar Noticias') }}
-                        </a>
-                        <a class="dropdown-item" href="{{route('usersposts.index')}}">
-                            {{ __('Ver Noticias') }}
-                        </a>
-                    </div>
                 </li>
             </ul>
             @endauth

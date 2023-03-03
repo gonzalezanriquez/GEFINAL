@@ -2,69 +2,128 @@
 
 @section('content')
 
+    <div class="row justify-content-center ">
+        <div class="col-md-9">
 
-<div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
-
-
+    <div class="main-body">
+    
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <p class="">Te damos la bienvenida,
-                        <span class="fw-bold">{{ Auth::user()->name }} &#128075</span> </p>
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="https://cdn.kastatic.org/images/avatars/svg/piceratops-seedling.svg" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h2>{{ Auth::user()->name }}  </h2>
+                      <p class="text-secondary mb-1">Te damos la bienvenida.Aqui podras encontrar las funcionalidades disponibles</p>
 
-
-
-{{-- TARJETAS --}}
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 col-xl-3">
-            <div class="card bg-c-blue order-card">
-                <div class="card-block">
-                    <h6 class="m-b-20">Alumnos</h6>
-                    {{-- <h2 class="text-right"><i class="fa  fa-users f-left counter"></i><span>{{$activePosts}}</span></h2> --}}
-                    <p class="m-b-0 counter">Completed Orders<span class="f-right counter">351</span></p>
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
+              </div>
 
-        <div class="col-md-4 col-xl-3">
-            <div class="card bg-c-green order-card">
-                <div class="card-block">
-                    <h6 class="m-b-20">Noticias</h6>
-                    {{-- <h2 class="text-right"><i class="fa fa-newspaper-o f-left"></i><span>{{$activePosts}}</span></h2> --}}
-                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+
+              <div class="card mt-3">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <p class="mb-0"><i class="bi bi-person-add pe-2 h3"></i> Usuarios</p>
+                    <span class="badge bg-danger "> {{ Auth::user()->count() }}  </span>                    
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <p class="mb-0"><i class="bi bi-person-vcard pe-2 h3"></i> Alumnos</p>
+                    <span class="badge bg-secondary "> {{ $alumnos }}  </span>                    
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <p class="mb-0"><i class="bi bi-mortarboard pe-2 h3"></i> Profesores</p>
+                    <span class="badge bg-warning ">  {{ $profesores}}  </span>                    
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Nombre</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        
+                    <span class="badge bg-info"> {{ Auth::user()->name }}  </span>
+                   
+                                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0"> Usuario</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <span class="badge bg-warning"> {{ Auth::user()->username }}  </span>
+
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <span class="badge bg-danger">  {{ Auth::user()->email }}   </span>
+
+                   
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Rol</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <span class="badge bg-secondary">  {{ Auth::user()->roles->implode('name',' - ') }}   </span></div>
+                  </div>
+                
+                
                 </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 col-xl-3">
-            <div class="card bg-c-yellow order-card">
-                <div class="card-block">
-                    <h6 class="m-b-20">Docentes</h6>
-                    <h2 class="text-right"><i class="fa fa-coffee f-left"></i><span>486</span></h2>
-                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
-                </div>
-            </div>
-        </div>
-
-
-	</div>
-</div>
 
 
 
+                
+              </div>
 
 
-                </div>
-            </div>
+              
+
+              <div class="row gutters-sm justify-content-center">
+              
+                <div class="d-flex justify-content-center">
+                   
+                    <a href="{{ route('users.index') }}" class="btn btn-warning me-2">GESTIONAR USUARIOS</a>
+                    <a href="{{ route('posts.index') }}" class="btn btn-info me-2">GESTIONAR POSTS</a>
+                   
+                </div>              
+
+                
+              </div>
+
+
+
+          </div>
+
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
 @endsection

@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('post_id');
             $table->string('image')->nullable();
+            $table->softDeletes();
             $table->integer('created_by');
             $table->integer('updated_by')->nullable();
-
             $table->timestamps();
         });
     }

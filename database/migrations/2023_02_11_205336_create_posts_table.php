@@ -18,8 +18,11 @@ return new class extends Migration
             $table->string('title');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('slug')->unique();
+            $table->text('excerpt');
             $table->text('body');
-            $table->boolean('isVisible')->default(true);
+            $table->integer('external')->default(0);
+            $table->integer('internal')->default(0);
+            $table->softDeletes();
             $table->integer('updated_by')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

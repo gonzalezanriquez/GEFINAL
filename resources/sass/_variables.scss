@@ -1,11 +1,40 @@
-// Body
+// VARIABLES
 $body-bg: #f8fafc;
+$amarillo:#fbcf33;
+$rojoQuote: #8c1515 !important;
+$quoteText:#ffffff;
+$positionQuote:center;
+$fuente: var(--bs-body-font-family);
+$fontFamily:$fuente;
+$botonAmarillo:$amarillo;
+$titulo:2.5rem;
+$bajadaTexto:1.5rem;
+
+
+
+.titulo{
+    font-size: $titulo!important;
+}
+.bajadaTexto{
+    font-size: $bajadaTexto!important;
+}
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
+:root{
+ --fuente: var(--bs-body-font-family);
+}
+
+.fontUsuario{
+    font-size: 1.2rem;;
+}
+
+html{
+    font-family: var(--fuente);
+}
 
 // login
 .gradient-custom-2 {
@@ -72,10 +101,9 @@ span.highlight::after {
 
 
 .boton {
-    background-color: #fbcf33 !important;
-    border-color: #ff9900 !important;
+    background-color:$amarillo!important;
     font-size: 1.1rem !important;
-    color: white !important;
+    color: #000000 !important;
 
 }
 

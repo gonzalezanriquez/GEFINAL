@@ -1,68 +1,87 @@
 @extends('layouts.sidebar')
-{{--@push('css')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.css"/>
-@endpush--}}
+
 @section('content')
-<section style="background-color: #eee;">
-<div class="container" >
-    <div class="px-4 py-5 my-5 text-center d-flex justify-content-center align-content-center " >
-
-        <div class="col-md-12">
-        {{-- <img class="mx-auto " src="{{asset('/img/news.png')}}"  alt="Image Noticias" height="200px">--}}
-
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center my-4">
-                            <h1>Lista de Usuarios</h1>
-                        </div>
-
-                        <a class="btn btn-dark btn-sm mb-4" href="{{route('users.create')}}">
+    <div class="row justify-content-center ">
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <div class=" text-center my-2">
+                        <img  class="" src="{{asset('/img/crearUsuario.png')}}" alt="Lista Usuarios" height="">
+                        <h1>Lista de Usuarios</h1>
+                        <a class="btn btn-dark  mb-3" href="{{route('users.create')}}">
+                        <i class="bi bi-person-add"></i>
                             Crear Nuevo Usuario
                         </a>
+                    </div>
+                    @if(session()->has('message'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session()->get('message') }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+                    @endif
 
-                        <!-- TABLA -->
-                        <table id="table" class="table">
-                            <thead>
-                            <tr>
+                    <!-- TABLA -->
+                    <table id="table" class="table">
+                        <thead>
+                            <tr class="text-center   ">
                                 <th class=" d-none d-xl-table-cell" scope="col ">Id</th>
-                                <th  scope="col">Nombre</th>
+                                <th scope="col">Nombre</th>
                                 <th class=" d-none d-xl-table-cell" scope="col">Email</th>
+                                 <th class=" d-none d-xl-table-cell" scope="col">Rol</th>
                                 <th style="text-align: end" scope="col">Acciones</th>
                             </tr>
-                            </thead>
-                            <tbody>
+                        </thead>
+                        <tbody>
+
                             @foreach($users as $user)
-                                <tr>
-                                    <th class=" d-none d-xl-table-cell" scope="row">{{$user->id}}</th>
-                                    <td>{{$user->name}}</td>
-                                    <td class=" d-none d-xl-table-cell">{{$user->email}}</td>
-                                    <td style="text-align: end">
+                            <tr>
+                                <th class=" d-none d-xl-table-cell text-center d-flex align-item-center" scope="row">{{$user->id}}</th>
+                                <td>{{$user->name}}</td>
+                                <td class=" d-none d-xl-table-cell">{{$user->email}}</td>
+                                <td class=" d-none d-xl-table-cell text-center">
 
-                                        <a class="btn btn-danger btn-sm mb-1" href="{{route('users.delete', ['id'=> $user->id])}}">Eliminar</a>
-                                        <a class="btn btn-success btn-sm mb-1" href="{{route('users.edit', ['id'=>$user->id])}}">Editar</a>
-                                        <a class="btn btn-warning btn-sm mb-1" href="{{route('roles.index', ['id'=>$user->id])}}">Roles</a>
+ @if(!empty($user))
+                                    <span class="badge bg-secondary">  {{ $user->getRoleNames() }}   </span>
+                                    @else
+                                    <span class="badge bg-danger">Sin Asignar</span>
+                                    @endif
+                                  
+                                </td>
 
-                                    </td>
-                                </tr>
+
+                                
+                                <td class="d-flex justify-content-end">
+                                    <!-- EDITAR -->
+                                    <a class="btn btn-success  me-2" href="{{route('users.edit', ['id'=>$user->id])}}">
+                                        <i class=" bi bi-pencil "></i></a>
+                                    <!-- ASIGNAR ROLES -->
+                                    <a class="btn btn-warning  me-2" href="{{route('roles.index', ['id'=>$user->id])}}">
+                                        <i class=" bi bi-person-vcard "></i></a>
+                                    <!-- DELETE -->
+                                    <form method="POST" action="{{route('posts.delete', ['id'=> $user->id])}}">
+                                        @csrf
+                                        @method('PUT')
+                                        <button class="btn btn-danger ">
+                                            <i class=" bi bi-trash "></i></button>
+                                    </form>
+
+
+
+                                </td>
+                               
+                              
+                            </tr>
                             @endforeach
-                            </tbody>
-                        </table>
-                        {!! $users->links() !!}
-                    </div>
+                        </tbody>
+                    </table>
+                    {!! $users->links() !!}
                 </div>
+            </div>
+        </div>
     </div>
-  </div>
-  </div>
 
-  </section>
 
-{{--    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/datatables.min.js"></script>--}}
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#table').DataTable();
-        } );
-    </script>
+
 
 
 @endsection

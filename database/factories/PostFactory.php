@@ -23,7 +23,8 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence,
             'user_id' => User::factory(),
             'slug' => Str::random(10,),
-            'body' => $this->faker->paragraphs(6, true)
+            'body' => $this->faker->paragraphs(6, true),
+            'excerpt' => $this->faker->paragraph,
         ];
 
 

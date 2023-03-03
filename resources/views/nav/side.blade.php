@@ -3,40 +3,61 @@
     <nav id="sidebar">
         <div class="p-5 pt-5">
             <div class="text-center">
-                <img class="mb-5" src="{{ asset('img/gelogob.png') }}" alt="Logo Gestiones Educativas" height="70rem">
+                <a href="/"><img class="mb-5" src="{{ asset('img/gelogob.png') }}" alt="Logo Gestiones Educativas" height="70rem"></a>
             </div>
 
             <ul class="list-unstyled components mb-5">
 
                 <li class="{{ Request::is('home*') ? 'active' : '' }}">
-                    <a href="{{ url('/home') }}" class="nav-link " aria-current="page">
-                        <i class="bi bi-browser-safari counter pe-2"></i> Dashboard</a>
+                    <a href="{{ route('home') }}" class="nav-link " aria-current="page">
+                        <i class="iconoSide bi bi-columns-gap pe-2 fa-lg"></i> Dashboard</a>
                 </li>
+
+                <li class="{{ Request::is('noticiasexternas*') ? 'active' : '' }}">
+                    <a href="{{ route('noticiasexternas.index', ['mode' => $mode = 'Externas']) }}" class="nav-link " aria-current="page">
+                        <i class="bi bi-envelope-open pe-2"></i> Noticias Externas</a>
+
+                @hasanyrole('administrador|profesor|alumno')
+
+                <li class="{{ Request::is('noticiasexternas*') ? 'active' : '' }}">
+                    <a href="{{ route('noticiasexternas.index', ['mode' => $mode = 'Internas']) }}" class="nav-link " aria-current="page">
+                        <i class="bi bi-envelope pe-2"></i> Noticias Internas</a>
+                </li>
+                @endhasanyrole
+                @hasanyrole('administrador|editor')
 
                 <li class="{{ Request::is('posts*') ? 'active' : '' }}">
-                    <a href="{{ url('/posts') }}" class="nav-link " aria-current="page">
-                        <i class="bi bi-menu-up counter pe-2"></i> Posteos Internos</a>
+                    <a href="{{ route('posts.index') }}" class="nav-link " aria-current="page">
+                        <i class="bi bi-bookmark-plus pe-2"></i> Posteos</a>
                 </li>
+                @endhasanyrole
+                @hasrole('administrador')
                 <li class="{{ Request::is('users*') ? 'active' : '' }}">
-                    <a href="{{ url('/users') }}" class="nav-link " aria-current="page">
-                        <i class="bi bi-person-bounding-box counter pe-2"></i> Usuarios</a>
+                    <a href="{{ route('users.index') }}" class="nav-link " aria-current="page">
+                        <i class="bi bi-person-add pe-2"></i> Usuarios</a>
                 </li>
+                @endhasrole
+                @hasanyrole('administrador|profesor|alumno')
+                <li class="{{ Request::is('profesores*') ? 'active' : '' }}">
+                    <a href="{{ route('profesores.index') }}" class="nav-link " aria-current="page">
+                        <i class="bi bi-mortarboard pe-2"></i> Profesores</a>
+                </li>
+                @endhasanyrole
+                @hasanyrole('administrador|profesor')
+                <li class="{{ Request::is('alumnos*') ? 'active' : '' }}">
+                    <a href="{{ route('alumnos.index') }}" class="nav-link " aria-current="page">
+                        <i class="bi bi-person-vcard pe-2"></i> Alumnos</a>
+                </li>
+                @endhasanyrole
+                <!-- Cierre de Sesion -->
+                <li class=""><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="bi bi-power pe-2"></i> Cerrar Sesion</a>
 
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
 
-
-
-
-
-                <li><a class="dropdown-item" href="{{ route('logout') }}"
-                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                 {{ __('Logout') }}
-             </a>
-             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                 @csrf
-             </form>
-
-            </li>
-
+                </li>
 
             </ul>
 
@@ -50,7 +71,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light pl-3">
             <div class="container-fluid">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                    <i class="bi bi-text-center"></i>
+                    <i class="bi bi-justify"></i>
                     {{-- <i class="fa fa-bars"></i> --}}
 
                 </button>
