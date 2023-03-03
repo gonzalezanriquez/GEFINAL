@@ -6,8 +6,8 @@
 GE es un sistema de gestión de numerosas acciones administrativas de un Colegio o Instituto. Tiene el alcance para brindar una respuesta al alumnado, docentes e incluso familias, ofreciendo acceso a valoraciones educativas, reuniones escolares, calificacione, listados del personal e incluso montos pendientes de abono.
 
 ##INSTALACION
--npm install
--composer install
+#npm install
+#composer install
 -php artisan update
 -composer update
 -npm update
