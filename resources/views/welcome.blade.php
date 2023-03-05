@@ -9,8 +9,7 @@
             <div class="container ">
                 <div class="row mx-md-5 align-items-center text -xs-center  ">
                     <div class="col-12 col-lg-6 px-lg-3 pt-lg-4">
-                        <h1 class="titulo animate__animated animate__fadeInDown">Soluciones integrales para tus <span class="highlight ::after">gestiones escolares
-                            </span> </span></h1>
+                        <h1 class="titulo animate__animated animate__fadeInDown">Soluciones integrales para tus <span class="highlight ::after">gestiones escolares</span></h1>
                         <p class="bajadaTitulo mt-5 animate__animated animate__fadeIn">Te ayudamos a sistematizar todas tus labores administrativas escolares
                             brindando una respuesta rapida y sencilla a docentes, alumnos y personal escolar. </p>
                     </div>
@@ -160,14 +159,14 @@
 
                         <!-- submit -->
 
-    
+
 
 
                         <div class="d-grid gap-2">
                             <input type="submit" name="submit" value="Enviar" class="boton btn ">
                           </div>
 
-                      
+
                     </form>
                 </div>
             </div>

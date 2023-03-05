@@ -40,16 +40,16 @@
                                 <td class=" d-none d-xl-table-cell">{{$user->email}}</td>
                                 <td class=" d-none d-xl-table-cell text-center">
 
- @if(!empty($user))
-                                    <span class="badge bg-secondary">  {{ $user->getRoleNames() }}   </span>
+                                @if($user->getRoleNames()->count() === 0)
+                                        <span class="badge bg-danger">Sin Asignar</span>
                                     @else
-                                    <span class="badge bg-danger">Sin Asignar</span>
+                                        <span class="badge bg-secondary">  {{ $user->getRoleNames()->implode(", ") }}  </span>
                                     @endif
-                                  
+
                                 </td>
 
 
-                                
+
                                 <td class="d-flex justify-content-end">
                                     <!-- EDITAR -->
                                     <a class="btn btn-success  me-2" href="{{route('users.edit', ['id'=>$user->id])}}">
@@ -68,8 +68,8 @@
 
 
                                 </td>
-                               
-                              
+
+
                             </tr>
                             @endforeach
                         </tbody>

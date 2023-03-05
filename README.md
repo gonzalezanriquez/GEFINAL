@@ -17,5 +17,6 @@ GE es un sistema de gestión de numerosas acciones administrativas de un Colegio
 
 -php artisan migrate:fresh --seed
 
+-php artisan key:generate
 
 
