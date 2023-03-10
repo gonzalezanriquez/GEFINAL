@@ -16,7 +16,7 @@ class PostController extends Controller
     {
             return view('posts.index', [
                 'posts' => Post::paginate(10)
-                
+
             ]);
 
     }
@@ -31,7 +31,7 @@ class PostController extends Controller
 }
     public function store(Request $request)
     {
-
+        dd($request);
         $request->validate([
             'title'=>'required|max:255',
             'body'=>'required|max:255',
@@ -46,18 +46,23 @@ class PostController extends Controller
                   'slug' => Str::random(20),
                ]);
 
-       
+
+
 
         // Public Folder
-       
-        
-        Image::create([
+
+
+        /*$path = $request->file()*/
+
+
+
+        /*Image::create([
             'post_id'=>$post['id'],
             'image'=>$request->image,
             'created_by'=>$post['user_id'],
 
 
-        ]);
+        ]);*/
 
         return redirect()->route('posts.index')->with('message','La noticia se ha creado exitosamente');
 
@@ -86,7 +91,7 @@ class PostController extends Controller
            $request->validate([
                      'title'=>'required|max:255',
                      'body'=>'required|max:500',
-             
+
            ]);
 
 
