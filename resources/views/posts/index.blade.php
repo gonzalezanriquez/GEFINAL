@@ -20,7 +20,7 @@
                     {{ session()->get('message') }}
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-                        
+
                     @endif
 
                     <!-- TABLA -->
@@ -30,7 +30,7 @@
                             <th class=" d-none d-xl-table-cell" scope="col ">Id</th>
                             <th scope="col">Titulo</th>
                             <th class=" d-none d-xl-table-cell" scope="col">Contenido</th>
-               
+
                             <th style="text-align: end" scope="col">Acciones</th>
                         </tr>
                         </thead>
@@ -41,7 +41,7 @@
                                 <th class=" d-none d-xl-table-cell text-center d-flex align-item-center" scope="row">{{$post->id}}</th>
                                 <td>{{$post->title}}</td>
                                 <td class=" d-none d-xl-table-cell">{{$post->excerpt}}</td>
-                               
+
 
 
 
@@ -67,7 +67,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{--{!! $post->links() !!}--}}
+                    {!! $posts->links() !!}
                 </div>
             </div>
         </div>

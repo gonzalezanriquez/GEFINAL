@@ -48,7 +48,7 @@ Route::get('/profesores/{id}', [ProfessorController::class, 'show'])->middleware
 
 // Students
 Route::get('/alumnos', [StudentController::class, 'index'])->middleware(['auth', 'role:alumno|profesor|administrador'])->name('alumnos.index');
-Route::get('/alumnos{id}', [StudentController::class, 'show'])->middleware(['auth', 'role:alumno|profesor|administrador'])->name('alumnos.show');
+Route::get('/alumnos/{id}', [StudentController::class, 'show'])->middleware(['auth', 'role:alumno|profesor|administrador'])->name('alumnos.show');
 
 //Posts
 Route::middleware(['auth', 'role:administrador'])->group(function () {
@@ -64,13 +64,13 @@ Route::middleware(['auth', 'role:administrador'])->group(function () {
 // Internal News
 Route::controller(UserPostController::class)->group(function () {
    Route::get('/noticias', 'index')->middleware(['auth', 'role:administrador'])->name('noticiasinternas.index');
-   Route::get('/noticias/{post}', 'show');
+   Route::get('/noticias/{id}', 'show')->name('noticiasinternas.show');
 });
 
 // External News
 Route::controller(UserPostController::class)->group(function () {
     Route::get('/noticias', 'index')->middleware(['auth', 'role:administrador'])->name('noticiasexternas.index');
-    Route::get('/noticias/{post}', 'show');
+    Route::get('/noticias/{id}', 'show')->name('noticiasexternas.show');
 });
 
 //Roles

@@ -36,7 +36,7 @@
                                 <td class=" d-none d-xl-table-cell">{{$user->email}}</td>
                                 <td class="text-end">
                                     <!-- MOSTRAR PERFIL -->
-                                    <a class="btn btn-warning btn-sm mb-1" href="{{route('profesores.show')}}">
+                                    <a class="btn btn-warning btn-sm mb-1" href="{{route('profesores.show', $user->id)}}">
                                         <i class=" bi bi-person-vcard "></i></a>
                                 </td>
                             </tr>

@@ -10,26 +10,36 @@
         </div>
 
         <div class="row row-cols-md-2 row-cols-md-3 g-4">
-       {{-- @foreach ($images as $image )--}}
-        @foreach ($posts as $post )
+
+            @foreach ($posts as $post )
                 <div class="col">
                     <div class="card">
-                        {{--<img src="{{$image->image}}" class="card-img-top" alt="...">--}}
-                        <div class="card-body">
-                            <h5 class="card-title">{{$post->title}}</h5>
-                            <p class="card-text">{{$post->excerpt}}</p>
-                            <a href="/posts/{{$post->slug}}">
-                                Leer más
-                            </a>
-                        </div>
-                    </div>
-                </div>
-           {{-- @endforeach--}}
-            @endforeach
+                        @foreach($images as $image)
 
+                            @if($image->post_id === $post->id)
+                                <img src="{{ asset('storage/'. $image->image) }}" class="card-img-top" alt="...">
+                            @endif
+
+                        @endforeach
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{$post->title}}</h5>
+                            <p class="card-text">{{$post->excerpt}}</p>
+                            @if($mode === 'Internas')
+                                <a href="{{route('noticiasinternas.show', $post->id)}}">
+                                    Leer más
+                                </a>
+                            @else
+                                <a href="{{route('noticiasexternas.show', $post->id)}}">
+                                    Leer más
+                                </a>
+                            @endif
+                            </div>
+                        </div>
+                </div>
+            @endforeach
         </div>
 {!! $posts->links() !!}
 
-    </div>
+        </div>
 
 @endsection

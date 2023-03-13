@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -38,11 +39,18 @@ class DatabaseSeeder extends Seeder
 
         User::factory(20)->create();
 
+        // Limpia la carpeta public y crea el archivo git ignore, también te deje comentado las factories pq no sirven los links que crean pero porsia
+        $files = Storage::files('public');
 
+        foreach ($files as $file) {
+            Storage::delete($file);
+        };
 
-        Image::factory(15)->create();
+        Storage::disk('public')->put('.gitignore', "*\r\n!.gitignore");
 
-        Post::factory(15)->create();
+        /*Image::factory(15)->create();*/
+
+        /*Post::factory(15)->create();*/
 
 
     }
