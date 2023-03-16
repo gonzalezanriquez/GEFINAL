@@ -11,7 +11,7 @@
             @auth
             <ul class="navbar-nav me-auto">
                 <li class="nav-item px-3">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle px-2" href="{{route('noticiasexternas.index')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle px-2" href="{{route('noticiasext.index')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ __('Noticias') }}
                     </a>
                 </li>
