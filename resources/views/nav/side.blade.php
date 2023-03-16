@@ -13,14 +13,14 @@
                         <i class="iconoSide bi bi-columns-gap pe-2 fa-lg"></i> Dashboard</a>
                 </li>
 
-                <li class="{{ Request::is('noticiasexternas*') ? 'active' : '' }}">
-                    <a href="{{ route('noticiasexternas.index', ['mode' => $mode = 'Externas']) }}" class="nav-link " aria-current="page">
+                <li class="{{ Request::is('noticiasext*') ? 'active' : '' }}">
+                    <a href="{{ route('noticiasext.index', ['mode' => $mode = 'Externas']) }}" class="nav-link " aria-current="page">
                         <i class="bi bi-envelope-open pe-2"></i> Noticias Externas</a>
 
                 @hasanyrole('administrador|profesor|alumno')
 
-                <li class="{{ Request::is('noticiasexternas*') ? 'active' : '' }}">
-                    <a href="{{ route('noticiasexternas.index', ['mode' => $mode = 'Internas']) }}" class="nav-link " aria-current="page">
+                <li class="{{ Request::is('noticiasint*') ? 'active' : '' }}">
+                    <a href="{{ route('noticiasint.index', ['mode' => $mode = 'Internas']) }}" class="nav-link " aria-current="page">
                         <i class="bi bi-envelope pe-2"></i> Noticias Internas</a>
                 </li>
                 @endhasanyrole

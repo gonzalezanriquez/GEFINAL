@@ -61,17 +61,13 @@ Route::middleware(['auth', 'role:administrador'])->group(function () {
     Route::put('/posts/delete/{id}',[PostController::class, 'destroy'])->name('posts.delete');
 });
 
-// Internal News
+// News
 Route::controller(UserPostController::class)->group(function () {
-   Route::get('/noticias', 'index')->middleware(['auth', 'role:administrador'])->name('noticiasinternas.index');
-   Route::get('/noticias/{id}', 'show')->name('noticiasinternas.show');
+   Route::get('/noticiasint', 'index')->middleware(['auth', 'role:administrador'])->name('noticiasint.index');
+    Route::get('/noticiasext', 'index')->middleware(['auth', 'role:administrador'])->name('noticiasext.index');
+   Route::get('/noticias/{id}', 'show')->name('noticias.show');
 });
 
-// External News
-Route::controller(UserPostController::class)->group(function () {
-    Route::get('/noticias', 'index')->middleware(['auth', 'role:administrador'])->name('noticiasexternas.index');
-    Route::get('/noticias/{id}', 'show')->name('noticiasexternas.show');
-});
 
 //Roles
 Route::get('/users/roles', [RoleController::class, 'index'])->middleware(['auth', 'role:administrador'])->name('roles.index');
