@@ -18,8 +18,8 @@
 
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session()->get('message') }}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 
                     @endif
 
@@ -49,9 +49,6 @@
                                     <!-- EDITAR -->
                                     <a class="btn btn-success  me-2" href="{{route('posts.edit', ['id'=>$post->id])}}">
                                         <i class=" bi bi-pencil "></i></a>
-                                    <!-- ASIGNAR ROLES -->
-                                    <a class="btn btn-warning me-2" href="{{--{{route('posts.index', ['id'=>$post->id])}}--}}">
-                                        <i class=" bi bi-person-vcard "></i></a>
                                     <!-- DELETE -->
                                     <form method="POST" action="{{route('posts.delete', ['id'=> $post->id])}}">
                                         @csrf

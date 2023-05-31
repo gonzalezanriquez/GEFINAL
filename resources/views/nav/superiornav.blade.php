@@ -8,7 +8,6 @@
 
         <div class="collapse navbar-collapse px-3 " id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            @auth
             <ul class="navbar-nav me-auto">
                 <li class="nav-item px-3">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle px-2" href="{{route('noticiasext.index')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -16,7 +15,6 @@
                     </a>
                 </li>
             </ul>
-            @endauth
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->

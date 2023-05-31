@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
 
         foreach ($files as $file) {
             Storage::delete($file);
-        };
+        }
 
         Storage::disk('public')->put('.gitignore', "*\r\n!.gitignore");
 

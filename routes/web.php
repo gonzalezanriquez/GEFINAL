@@ -23,9 +23,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Architecture
-Route::view('/architecture', 'architecture')->name('arc');
-
 //Welcome
 Route::view('/','welcome');
 
@@ -64,7 +61,7 @@ Route::middleware(['auth', 'role:administrador'])->group(function () {
 // News
 Route::controller(UserPostController::class)->group(function () {
    Route::get('/noticiasint', 'index')->middleware(['auth', 'role:administrador'])->name('noticiasint.index');
-    Route::get('/noticiasext', 'index')->middleware(['auth', 'role:administrador'])->name('noticiasext.index');
+    Route::get('/noticiasext', 'index')->name('noticiasext.index');
    Route::get('/noticias/{id}', 'show')->name('noticias.show');
 });
 
